@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ApplicationCore" namespace="ApplicationCore.Domain.EN">
+  <class name="Usuario" table="Usuario">
+    <id name="Id" column="Id" type="long">
+      <generator class="hilo">
+        <param name="table">NHibernateUniqueKey</param>
+        <param name="column">NextHigh</param>
+        <param name="max_lo">100</param>
+      </generator>
+    </id>
+    <property name="Nombre" column="Nombre" />
+    <property name="Email" column="Email" />
+    <property name="Contrasena" column="Contrasena" />
+    <property name="FotoPerfil" column="FotoPerfil" />
+    <property name="Biografia" column="Biografia" />
+    <property name="ModoBlancoYNegro" column="ModoBlancoYNegro" />
+
+    <bag name="Resenas" inverse="true" cascade="all-delete-orphan">
+      <key column="Usuario_Id" />
+      <one-to-many class="Resena" />
+    </bag>
+
+    <bag name="Listas" inverse="true" cascade="all-delete-orphan">
+      <key column="Usuario_Id" />
+      <one-to-many class="Lista" />
+    </bag>
+
+    <bag name="Notificaciones" inverse="true" cascade="all-delete-orphan">
+      <key column="Usuario_Id" />
+      <one-to-many class="Notificacion" />
+    </bag>
+
+    <bag name="Reportes" inverse="true" cascade="all-delete-orphan">
+      <key column="Usuario_Id" />
+      <one-to-many class="Reporte" />
+    </bag>
+
+    <one-to-one name="Metrica" class="Metrica" property-ref="Usuario" cascade="all" />
+  </class>
+</hibernate-mapping>

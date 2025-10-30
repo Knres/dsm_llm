@@ -1,0 +1,127 @@
+{
+  "info": {
+    "name": "FLICKS Domain",
+    "version": "1.0"
+  },
+  "enums": {
+    "TipoNotificacion": {
+      "values": ["LikeResenya", "Reporte", "Anuncio", "Otro"]
+    },
+    "TipoLista": {
+      "values": ["Vista", "Pendiente", "MeGusta", "Otra"]
+    },
+    "EstadoReporte": {
+      "values": ["Pendiente", "Resuelto", "Rechazado"]
+    }
+  },
+  "entities": {
+    "Usuario": {
+      "properties": {
+        "Id": { "type": "long", "nullable": false },
+        "Nombre": { "type": "string", "nullable": false },
+        "Email": { "type": "string", "nullable": false },
+        "Contrasena": { "type": "string", "nullable": false },
+        "FotoPerfil": { "type": "string", "nullable": true },
+        "Biografia": { "type": "string", "nullable": true },
+        "ModoBlancoYNegro": { "type": "bool", "nullable": false, "default": false }
+      },
+      "relationships": {
+        "Resenas": { "type": "one-to-many", "target": "Resena" },
+        "Listas": { "type": "one-to-many", "target": "Lista" },
+        "Notificaciones": { "type": "one-to-many", "target": "Notificacion" },
+        "Reportes": { "type": "one-to-many", "target": "Reporte" },
+        "Metrica": { "type": "one-to-one", "target": "Metrica", "nullable": true }
+      }
+    },
+    "Administrador": {
+      "properties": {
+        "Id": { "type": "long", "nullable": false },
+        "Nombre": { "type": "string", "nullable": false },
+        "Email": { "type": "string", "nullable": false },
+        "Contrasena": { "type": "string", "nullable": false }
+      },
+      "relationships": {
+        "ReportesResueltos": { "type": "one-to-many", "target": "Reporte" },
+        "PeliculasPublicadas": { "type": "one-to-many", "target": "Pelicula" }
+      }
+    },
+    "Pelicula": {
+      "properties": {
+        "Id": { "type": "long", "nullable": false },
+        "Titulo": { "type": "string", "nullable": false },
+        "TituloOriginal": { "type": "string", "nullable": true },
+        "Ano": { "type": "long", "nullable": true },
+        "Duracion": { "type": "long", "nullable": true },
+        "Pais": { "type": "string", "nullable": true },
+        "Director": { "type": "string", "nullable": true },
+        "Genero": { "type": "string", "nullable": true },
+        "Sinopsis": { "type": "string", "nullable": true },
+        "ValoracionMedia": { "type": "decimal", "nullable": true }
+      },
+      "relationships": {
+        "Resenas": { "type": "one-to-many", "target": "Resena" },
+        "Listas": { "type": "many-to-many", "target": "Lista" },
+        "Administrador": { "type": "many-to-one", "target": "Administrador", "nullable": true }
+      }
+    },
+    "Resena": {
+      "properties": {
+        "Id": { "type": "long", "nullable": false },
+        "Puntuacion": { "type": "int", "nullable": false },
+        "Comentario": { "type": "string", "nullable": true },
+        "FechaPublicacion": { "type": "date-time", "nullable": false }
+      },
+      "relationships": {
+        "Usuario": { "type": "many-to-one", "target": "Usuario", "nullable": false },
+        "Pelicula": { "type": "many-to-one", "target": "Pelicula", "nullable": false },
+        "Reporte": { "type": "one-to-one", "target": "Reporte", "nullable": true }
+      }
+    },
+    "Lista": {
+      "properties": {
+        "Id": { "type": "long", "nullable": false },
+        "Nombre": { "type": "string", "nullable": false },
+        "Tipo": { "type": "TipoLista", "nullable": false }
+      },
+      "relationships": {
+        "Usuario": { "type": "many-to-one", "target": "Usuario", "nullable": false },
+        "Peliculas": { "type": "many-to-many", "target": "Pelicula" }
+      }
+    },
+    "Reporte": {
+      "properties": {
+        "Id": { "type": "long", "nullable": false },
+        "Motivo": { "type": "string", "nullable": false },
+        "Estado": { "type": "EstadoReporte", "nullable": false },
+        "Fecha": { "type": "date-time", "nullable": false }
+      },
+      "relationships": {
+        "Usuario": { "type": "many-to-one", "target": "Usuario", "nullable": false },
+        "Administrador": { "type": "many-to-one", "target": "Administrador", "nullable": true },
+        "Resena": { "type": "many-to-one", "target": "Resena", "nullable": true }
+      }
+    },
+    "Notificacion": {
+      "properties": {
+        "Id": { "type": "long", "nullable": false },
+        "Mensaje": { "type": "string", "nullable": false },
+        "Fecha": { "type": "date-time", "nullable": false },
+        "Tipo": { "type": "TipoNotificacion", "nullable": false },
+        "IdOrigen": { "type": "long", "nullable": true }
+      },
+      "relationships": {
+        "Usuario": { "type": "many-to-one", "target": "Usuario", "nullable": false }
+      }
+    },
+    "Metrica": {
+      "properties": {
+        "Id": { "type": "long", "nullable": false },
+        "Estadisticas": { "type": "string", "nullable": false },
+        "Fecha": { "type": "date-time", "nullable": false }
+      },
+      "relationships": {
+        "Usuario": { "type": "one-to-one", "target": "Usuario", "nullable": false }
+      }
+    }
+  }
+}

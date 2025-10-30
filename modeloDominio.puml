@@ -1,0 +1,164 @@
+@startuml
+skinparam packageStyle rectangle
+title FLICKS Domain
+' ===============================================================
+' === HECHO POR:
+' === Qinrui Chen
+' === Noelia Almeida Ibáñez
+' === Sebastián Ayala García
+' === Sandra Moya del Amo
+' ===============================================================
+
+
+package "FLICKS" {
+  ' ===============================================================
+  ' === CLASES
+  ' ===============================================================
+  class Usuario {
+    - id : long
+    - nombre : string
+    - email : string
+    - contraseña : string
+    - fotoPerfil : string
+    - biografía : string
+    - modoBlancoYNegro : bool
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+    + readFilter()
+  }
+
+  class Administrador {
+    - id : long
+    - nombre : string
+    - email : string
+    - contraseña : string
+    + modify()
+    + readFilter()
+  }
+
+
+  class Pelicula {
+    - id : long
+    - titulo : string
+    - tituloOriginal : string
+    - año : long
+    - duración : long
+    - país : string
+    - director : string
+    - genero : string
+    - sinopsis : string
+    - valoraciónMedia : decimal
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+    + readFilter()
+  }
+
+  class Reseña {
+    - id : long
+    - puntuación : long
+    - comentario : string
+    - fechaPublicación : DateTime
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+    + readFilter()
+  }
+
+  class Lista {
+    - id : long
+    - nombre : string
+    - tipo : tipoLista
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+  }
+
+  class Reporte {
+    - id : long
+    - motivo : string
+    - estado : estadoReporte
+    - fecha : DateTime
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+    + readFilter()
+  }
+
+  class Notificación {
+    - id : long
+    - mensaje : string
+    - fecha : DateTime
+    - tipo : tipoNotificacion
+    - IdOrigen : long
+
+    + new()
+    + destroy()
+    + readAll()
+    + readID()
+  }
+
+  class Métrica {
+    - id : long
+    - estadísticas : string
+    - fecha : DateTime
+    + readAll()
+    + readID()
+  }
+  
+
+  ' ===============================================================
+  ' === ENUMS
+  ' ===============================================================
+
+  enum tipoNotificacion {
+    LikeResenya
+    Reporte
+    Anuncio
+    Otro
+  }
+
+  enum tipoLista {
+    Vista
+    Pendiente
+    MeGusta
+    Otra
+  }
+
+  enum estadoReporte {
+    Pendiente
+    Resuelto
+    Rechazado
+  }
+
+
+  ' ===============================================================
+  ' === RELACIONES
+  ' ===============================================================
+
+  Usuario "1" -- "*" Reseña : escribe >
+  Usuario "1" -- "*" Lista : crea >
+  Usuario "1" -- "*" Notificación : recibe >
+  Usuario "1" -- "*" Reporte : realiza >
+  Administrador "1" -- "*" Reporte : resuelve >
+  Administrador "1" -- "*" Pelicula : publica >
+  Pelicula "1" -- "*" Reseña : tiene >
+  Lista "0..*" -- "*" Pelicula : contiene >
+  Reporte "0..1" -- "1" Reseña : sobre >
+  Métrica "1" <-- "1" Usuario : consulta >
+
+
+
+}
+@enduml

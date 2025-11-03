@@ -40,7 +40,7 @@ namespace ApplicationCore.Domain.CP
             _notificacionRepository = notificacionRepository;
         }
 
-        public long CrearReporteYNotificar(long resenaId, long autorId, string motivo)
+        public virtual long CrearReporteYNotificar(long resenaId, long autorId, string motivo)
         {
             try
             {
@@ -88,7 +88,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void ProcesarReporte(long reporteId, estadoReporte nuevoEstado, string respuesta)
+        public virtual void ProcesarReporte(long reporteId, estadoReporte nuevoEstado, string respuesta)
         {
             try
             {

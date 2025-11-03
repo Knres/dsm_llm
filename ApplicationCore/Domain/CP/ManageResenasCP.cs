@@ -41,7 +41,7 @@ namespace ApplicationCore.Domain.CP
             _notificacionRepository = notificacionRepository;
         }
 
-        public long CrearResenaYNotificar(long peliculaId, long autorId, decimal valoracion, string comentario)
+        public virtual long CrearResenaYNotificar(long peliculaId, long autorId, decimal valoracion, string comentario)
         {
             try
             {
@@ -101,7 +101,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void ModificarResena(long resenaId, decimal valoracion, string comentario)
+        public virtual void ModificarResena(long resenaId, decimal valoracion, string comentario)
         {
             try
             {
@@ -138,7 +138,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void EliminarResena(long resenaId)
+        public virtual void EliminarResena(long resenaId)
         {
             try
             {

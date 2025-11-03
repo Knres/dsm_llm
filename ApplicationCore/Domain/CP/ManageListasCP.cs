@@ -35,7 +35,7 @@ namespace ApplicationCore.Domain.CP
             _peliculaRepository = peliculaRepository;
         }
 
-        public long CrearListaParaUsuario(string nombre, tipoLista tipo, long usuarioId)
+        public virtual long CrearListaParaUsuario(string nombre, tipoLista tipo, long usuarioId)
         {
             try
             {
@@ -66,7 +66,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void AgregarPeliculaALista(long listaId, long peliculaId)
+        public virtual void AgregarPeliculaALista(long listaId, long peliculaId)
         {
             try
             {
@@ -99,7 +99,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void QuitarPeliculaDeLista(long listaId, long peliculaId)
+        public virtual void QuitarPeliculaDeLista(long listaId, long peliculaId)
         {
             try
             {

@@ -15,7 +15,7 @@ namespace ApplicationCore.Domain.CEN
             _unitOfWork = unitOfWork;
         }
 
-        public long Crear(string nombre, tipoLista tipo)
+    public virtual long Crear(string nombre, tipoLista tipo)
         {
             var lista = new Lista
             {
@@ -28,7 +28,7 @@ namespace ApplicationCore.Domain.CEN
             return lista.Id;
         }
 
-        public void Modificar(long id, string nombre, tipoLista tipo)
+    public virtual void Modificar(long id, string nombre, tipoLista tipo)
         {
             var lista = _listaRepository.ReadById(id);
             if (lista == null)
@@ -41,7 +41,7 @@ namespace ApplicationCore.Domain.CEN
             _unitOfWork.SaveChanges();
         }
 
-        public void Eliminar(long id)
+    public virtual void Eliminar(long id)
         {
             var lista = _listaRepository.ReadById(id);
             if (lista == null)
@@ -51,12 +51,12 @@ namespace ApplicationCore.Domain.CEN
             _unitOfWork.SaveChanges();
         }
 
-        public Lista ObtenerPorId(long id)
+    public virtual Lista ObtenerPorId(long id)
         {
             return _listaRepository.ReadById(id);
         }
 
-        public IList<Lista> ObtenerTodas()
+    public virtual IList<Lista> ObtenerTodas()
         {
             return _listaRepository.ReadAll();
         }

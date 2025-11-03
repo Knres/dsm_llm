@@ -41,7 +41,7 @@ namespace ApplicationCore.Domain.CP
             _listaRepository = listaRepository;
         }
 
-        public void ActualizarMetricasPelicula(long peliculaId)
+    public virtual void ActualizarMetricasPelicula(long peliculaId)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void ActualizarMetricasTodasPeliculas()
+    public virtual void ActualizarMetricasTodasPeliculas()
         {
             var peliculas = _peliculaRepository.ReadAll();
             foreach (var pelicula in peliculas)
@@ -101,7 +101,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public IEnumerable<Pelicula> ObtenerPeliculasMasPopulares(int cantidad = 10)
+    public virtual IEnumerable<Pelicula> ObtenerPeliculasMasPopulares(int cantidad = 10)
         {
             try
             {

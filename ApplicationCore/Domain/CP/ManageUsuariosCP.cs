@@ -17,12 +17,12 @@ namespace ApplicationCore.Domain.CP
             _uow = uow;
         }
 
-        public void CrearUsuario(Usuario u)
+        public virtual void CrearUsuario(Usuario u)
         {
             _usuarioCEN.Crear(u);
             _uow.SaveChanges();
         }
 
-        public IEnumerable<Usuario> ListarUsuarios() => _usuarioCEN.LeerTodos();
+        public virtual IEnumerable<Usuario> ListarUsuarios() => _usuarioCEN.LeerTodos();
     }
 }

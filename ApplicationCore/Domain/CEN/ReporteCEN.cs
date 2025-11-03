@@ -16,7 +16,7 @@ namespace ApplicationCore.Domain.CEN
             _unitOfWork = unitOfWork;
         }
 
-        public long Crear(string motivo, estadoReporte estado, DateTime fecha)
+    public virtual long Crear(string motivo, estadoReporte estado, DateTime fecha)
         {
             var reporte = new Reporte
             {
@@ -30,7 +30,7 @@ namespace ApplicationCore.Domain.CEN
             return reporte.Id;
         }
 
-        public void Modificar(long id, string motivo, estadoReporte estado)
+    public virtual void Modificar(long id, string motivo, estadoReporte estado)
         {
             var reporte = _reporteRepository.ReadById(id);
             if (reporte == null)
@@ -43,7 +43,7 @@ namespace ApplicationCore.Domain.CEN
             _unitOfWork.SaveChanges();
         }
 
-        public void Eliminar(long id)
+    public virtual void Eliminar(long id)
         {
             var reporte = _reporteRepository.ReadById(id);
             if (reporte == null)
@@ -53,12 +53,12 @@ namespace ApplicationCore.Domain.CEN
             _unitOfWork.SaveChanges();
         }
 
-        public Reporte ObtenerPorId(long id)
+    public virtual Reporte ObtenerPorId(long id)
         {
             return _reporteRepository.ReadById(id);
         }
 
-        public IList<Reporte> ObtenerTodos()
+    public virtual IList<Reporte> ObtenerTodos()
         {
             return _reporteRepository.ReadAll();
         }

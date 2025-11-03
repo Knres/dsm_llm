@@ -34,7 +34,7 @@ namespace ApplicationCore.Domain.CP
             _notificacionRepository = notificacionRepository;
         }
 
-        public long CrearListaPersonalizada(string nombre, long usuarioId)
+        public virtual long CrearListaPersonalizada(string nombre, long usuarioId)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public long CrearYProcesarReporte(string motivo, long usuarioReportadoId, long usuarioReportanteId)
+        public virtual long CrearYProcesarReporte(string motivo, long usuarioReportadoId, long usuarioReportanteId)
         {
             try
             {
@@ -110,7 +110,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void ProcesarReporte(long reporteId, estadoReporte nuevoEstado)
+        public virtual void ProcesarReporte(long reporteId, estadoReporte nuevoEstado)
         {
             try
             {

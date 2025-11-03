@@ -29,7 +29,7 @@ namespace ApplicationCore.Domain.CP
             _usuarioRepository = usuarioRepository;
         }
 
-        public void EnviarNotificacionMasiva(string mensaje, tipoNotificacion tipo, IEnumerable<long> destinatariosIds)
+    public virtual void EnviarNotificacionMasiva(string mensaje, tipoNotificacion tipo, IEnumerable<long> destinatariosIds)
         {
             try
             {
@@ -62,7 +62,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void MarcarNotificacionesComoLeidas(long usuarioId, IEnumerable<long> notificacionesIds)
+    public virtual void MarcarNotificacionesComoLeidas(long usuarioId, IEnumerable<long> notificacionesIds)
         {
             try
             {
@@ -92,7 +92,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void EliminarNotificacionesAnterioresA(DateTime fecha)
+    public virtual void EliminarNotificacionesAnterioresA(DateTime fecha)
         {
             try
             {

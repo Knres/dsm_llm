@@ -34,7 +34,7 @@ namespace ApplicationCore.Domain.CP
             _notificacionRepository = notificacionRepository;
         }
 
-        public long CrearPeliculaYNotificar(string titulo, string tituloOriginal, long anio, long duracion, 
+        public virtual long CrearPeliculaYNotificar(string titulo, string tituloOriginal, long anio, long duracion, 
             string pais, string director, string genero, string sinopsis)
         {
             try
@@ -81,7 +81,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public void AgregarResenaYActualizarValoracion(long peliculaId, long usuarioId, decimal valoracion, string comentario)
+        public virtual void AgregarResenaYActualizarValoracion(long peliculaId, long usuarioId, decimal valoracion, string comentario)
         {
             try
             {

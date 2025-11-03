@@ -16,12 +16,12 @@ namespace ApplicationCore.Domain.CEN
         }
 
         // Nota: Según el modelo de dominio, Metrica solo tiene métodos de lectura
-        public Metrica ObtenerPorId(long id)
+    public virtual Metrica ObtenerPorId(long id)
         {
             return _metricaRepository.ReadById(id);
         }
 
-        public IList<Metrica> ObtenerTodas()
+    public virtual IList<Metrica> ObtenerTodas()
         {
             return _metricaRepository.ReadAll();
         }

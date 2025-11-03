@@ -5,10 +5,10 @@ namespace ApplicationCore.Domain.Repositories
 {
     public interface INotificacionRepository
     {
-        Notificacion GetById(long id);
-        IEnumerable<Notificacion> GetAll();
+        Notificacion ReadById(long id);
+        IList<Notificacion> ReadAll();
         void New(Notificacion entity);
         void Modify(Notificacion entity);
-        void Destroy(long id);
+        void Delete(Notificacion entity);
     }
 }

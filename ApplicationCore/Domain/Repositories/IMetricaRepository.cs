@@ -5,7 +5,10 @@ namespace ApplicationCore.Domain.Repositories
 {
     public interface IMetricaRepository
     {
-        Metrica GetById(long id);
-        IEnumerable<Metrica> GetAll();
+        Metrica ReadById(long id);
+        IList<Metrica> ReadAll();
+        void New(Metrica metrica);
+        void Modify(Metrica metrica);
+        void Delete(Metrica metrica);
     }
 }

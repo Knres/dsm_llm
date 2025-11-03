@@ -6,11 +6,11 @@ namespace ApplicationCore.Domain.EN
     public class Usuario
     {
         public virtual long Id { get; set; }
-        public virtual string Nombre { get; set; }
-        public virtual string Email { get; set; }
-        public virtual string Contrasena { get; set; }
-        public virtual string FotoPerfil { get; set; }
-        public virtual string Biografia { get; set; }
+    public virtual string Nombre { get; set; } = null!;
+    public virtual string Email { get; set; } = null!;
+    public virtual string Contrasena { get; set; } = null!;
+        public virtual string? FotoPerfil { get; set; }
+        public virtual string? Biografia { get; set; }
         public virtual bool ModoBlancoYNegro { get; set; }
 
         // Navegaciones

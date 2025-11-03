@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\Infrastructure.csproj": {}
+    "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\Infrastructure.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
+    "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "projectUniqueName": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
         "projectName": "ApplicationCore",
-        "projectPath": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "projectPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\kinru\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\obj\\",
+        "outputPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\kinru\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\obj\\",
+        "outputPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,8 +97,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
-                "projectPath": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj"
+              "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
+                "projectPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj"
               }
             }
           }
@@ -121,11 +121,11 @@
           "dependencies": {
             "NHibernate": {
               "target": "Package",
-              "version": "[5.3.10, )"
+              "version": "[5.4.7, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.9.0, )"
+              "version": "[4.8.6, )"
             }
           },
           "imports": [

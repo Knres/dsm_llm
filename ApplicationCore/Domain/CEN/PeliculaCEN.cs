@@ -7,28 +7,35 @@ namespace ApplicationCore.Domain.CEN
     public class PeliculaCEN
     {
         private readonly IPeliculaRepository _repo;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public PeliculaCEN(IPeliculaRepository repo)
+        public PeliculaCEN(IPeliculaRepository repo, IUnitOfWork unitOfWork)
         {
             _repo = repo;
+            _unitOfWork = unitOfWork;
         }
 
-        public void Crear(Pelicula p)
+        public virtual void Crear(Pelicula p)
         {
             _repo.New(p);
+            _unitOfWork.SaveChanges();
         }
 
-        public void Modificar(Pelicula p)
+        public virtual void Modificar(Pelicula p)
         {
             _repo.Modify(p);
+            _unitOfWork.SaveChanges();
         }
 
-        public void Eliminar(long id)
+        public virtual void Eliminar(long id)
         {
-            _repo.Destroy(id);
+            var pelicula = _repo.ReadById(id);
+            if (pelicula != null)
+                _repo.Delete(pelicula);
+            _unitOfWork.SaveChanges();
         }
 
-        public IEnumerable<Pelicula> LeerTodos() => _repo.GetAll();
-        public Pelicula LeerPorId(long id) => _repo.GetById(id);
+        public virtual IList<Pelicula> LeerTodos() => _repo.ReadAll();
+        public virtual Pelicula LeerPorId(long id) => _repo.ReadById(id);
     }
 }

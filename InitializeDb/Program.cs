@@ -2,6 +2,11 @@
 using System.IO;
 using NHibernate.Tool.hbm2ddl;
 using Infrastructure.NHibernate;
+using Microsoft.Extensions.DependencyInjection;
+using ApplicationCore.Domain.CEN;
+using ApplicationCore.Domain.Repositories;
+using Infrastructure.NHibernate.Repositories;
+using InitializeDb.Data;
 
 namespace InitializeDb
 {
@@ -16,7 +21,7 @@ namespace InitializeDb
 			while (repoRoot != null && !File.Exists(Path.Combine(repoRoot, "domain.model.json")))
 			{
 				var parent = Directory.GetParent(repoRoot);
-				repoRoot = parent?.FullName;
+				repoRoot = parent?.FullName ?? null;
 			}
 			if (repoRoot == null)
 				throw new Exception("No se pudo localizar la raíz del repositorio (domain.model.json)");
@@ -66,7 +71,26 @@ namespace InitializeDb
 				}
 
 				export2.Create(false, true);
-				Console.WriteLine("SchemaExport completado en LocalDB. InitializeDb completado.");
+				Console.WriteLine("SchemaExport completado en LocalDB.");
+
+                // Configurar servicios para seeding
+                var services = ConfigureServices(cfg);
+                using (var scope = services.CreateScope())
+                {
+                    try
+                    {
+                        var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
+                        seeder.SeedData();
+                        Console.WriteLine("Seeding de datos completado correctamente.");
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Error durante el seeding de datos: {ex.Message}");
+                        return 1;
+                    }
+                }
+
+                Console.WriteLine("InitializeDb completado correctamente.");
 				return 0;
 			}
 			catch (Exception e)
@@ -75,5 +99,41 @@ namespace InitializeDb
 				return 1;
 			}
 		}
+
+        private static ServiceProvider ConfigureServices(NHibernate.Cfg.Configuration nhConfig)
+        {
+            var services = new ServiceCollection();
+
+            // Configuración de NHibernate
+            services.AddSingleton(nhConfig);
+            services.AddSingleton(provider => provider.GetRequiredService<NHibernate.Cfg.Configuration>().BuildSessionFactory());
+            services.AddScoped(provider => provider.GetRequiredService<NHibernate.ISessionFactory>().OpenSession());
+
+            // Registro de UnitOfWork
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+            // Registro de Repositorios
+            services.AddScoped<IUsuarioRepository, UsuarioRepository>();
+            services.AddScoped<IPeliculaRepository, PeliculaRepository>();
+            services.AddScoped<IResenaRepository, ResenaRepository>();
+            services.AddScoped<IListaRepository, ListaRepository>();
+            services.AddScoped<IReporteRepository, ReporteRepository>();
+            services.AddScoped<INotificacionRepository, NotificacionRepository>();
+            services.AddScoped<IMetricaRepository, MetricaRepository>();
+
+            // Registro de CENs
+            services.AddScoped<UsuarioCEN>();
+            services.AddScoped<PeliculaCEN>();
+            services.AddScoped<ResenaCEN>();
+            services.AddScoped<ListaCEN>();
+            services.AddScoped<ReporteCEN>();
+            services.AddScoped<NotificacionCEN>();
+            services.AddScoped<MetricaCEN>();
+
+            // Registro del DataSeeder
+            services.AddScoped<DataSeeder>();
+
+            return services.BuildServiceProvider();
+        }
 	}
 }

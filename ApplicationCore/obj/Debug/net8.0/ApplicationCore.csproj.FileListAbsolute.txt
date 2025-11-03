@@ -10,3 +10,15 @@ D:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\Applicati
 D:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\refint\ApplicationCore.dll
 D:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.pdb
 D:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ref\ApplicationCore.dll
+C:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.AssemblyInfo.cs
+C:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.sourcelink.json
+C:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.dll
+C:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\refint\ApplicationCore.dll
+C:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.pdb
+c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\bin\Debug\net8.0\ApplicationCore.deps.json
+c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\bin\Debug\net8.0\ApplicationCore.dll
+c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\bin\Debug\net8.0\ApplicationCore.pdb
+c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ref\ApplicationCore.dll

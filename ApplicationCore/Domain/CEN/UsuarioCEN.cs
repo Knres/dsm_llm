@@ -7,29 +7,36 @@ namespace ApplicationCore.Domain.CEN
     public class UsuarioCEN
     {
         private readonly IUsuarioRepository _repo;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public UsuarioCEN(IUsuarioRepository repo)
+        public UsuarioCEN(IUsuarioRepository repo, IUnitOfWork unitOfWork)
         {
             _repo = repo;
+            _unitOfWork = unitOfWork;
         }
 
-        public void Crear(Usuario u)
+        public virtual void Crear(Usuario u)
         {
             // Validaciones de negocio ligeras pueden ir aquí
             _repo.New(u);
+            _unitOfWork.SaveChanges();
         }
 
-        public void Modificar(Usuario u)
+        public virtual void Modificar(Usuario u)
         {
             _repo.Modify(u);
+            _unitOfWork.SaveChanges();
         }
 
-        public void Eliminar(long id)
+        public virtual void Eliminar(long id)
         {
-            _repo.Destroy(id);
+            var usuario = _repo.ReadById(id);
+            if (usuario != null)
+                _repo.Delete(usuario);
+            _unitOfWork.SaveChanges();
         }
 
-        public IEnumerable<Usuario> LeerTodos() => _repo.GetAll();
-        public Usuario LeerPorId(long id) => _repo.GetById(id);
+        public virtual IList<Usuario> LeerTodos() => _repo.ReadAll();
+        public virtual Usuario LeerPorId(long id) => _repo.ReadById(id);
     }
 }

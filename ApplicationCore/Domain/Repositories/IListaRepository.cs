@@ -5,10 +5,10 @@ namespace ApplicationCore.Domain.Repositories
 {
     public interface IListaRepository
     {
-        Lista GetById(long id);
-        IEnumerable<Lista> GetAll();
+        Lista ReadById(long id);
+        IList<Lista> ReadAll();
         void New(Lista entity);
         void Modify(Lista entity);
-        void Destroy(long id);
+        void Delete(Lista entity);
     }
 }

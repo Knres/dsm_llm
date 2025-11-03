@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {}
+    "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {}
   },
   "projects": {
-    "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
+    "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "projectUniqueName": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
         "projectName": "ApplicationCore",
-        "projectPath": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "projectPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\kinru\\.nuget\\packages\\",
-        "outputPath": "D:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\obj\\",
+        "outputPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

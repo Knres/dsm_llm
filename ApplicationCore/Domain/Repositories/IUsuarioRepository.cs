@@ -5,11 +5,11 @@ namespace ApplicationCore.Domain.Repositories
 {
     public interface IUsuarioRepository
     {
-        Usuario GetById(long id);
-        IEnumerable<Usuario> GetAll();
+        Usuario ReadById(long id);
+        IList<Usuario> ReadAll();
         void New(Usuario entity);
         void Modify(Usuario entity);
-        void Destroy(long id);
-        IEnumerable<Usuario> FindByFilter(object filter);
+        void Delete(Usuario entity);
+        IList<Usuario> ReadByFilter(string filter);
     }
 }

@@ -5,11 +5,11 @@ namespace ApplicationCore.Domain.Repositories
 {
     public interface IReporteRepository
     {
-        Reporte GetById(long id);
-        IEnumerable<Reporte> GetAll();
+        Reporte ReadById(long id);
+        IList<Reporte> ReadAll();
         void New(Reporte entity);
         void Modify(Reporte entity);
-        void Destroy(long id);
-        IEnumerable<Reporte> FindByFilter(object filter);
+        void Delete(Reporte entity);
+        IList<Reporte> ReadByFilter(string filter);
     }
 }

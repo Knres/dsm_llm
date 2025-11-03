@@ -5,11 +5,11 @@ namespace ApplicationCore.Domain.Repositories
 {
     public interface IResenaRepository
     {
-        Resena GetById(long id);
-        IEnumerable<Resena> GetAll();
+        Resena ReadById(long id);
+        IList<Resena> ReadAll();
         void New(Resena entity);
         void Modify(Resena entity);
-        void Destroy(long id);
-        IEnumerable<Resena> FindByFilter(object filter);
+        void Delete(Resena entity);
+        IList<Resena> ReadByFilter(string filter);
     }
 }

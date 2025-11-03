@@ -1,24 +1,22 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<hibernate-configuration  xmlns="urn:nhibernate-configuration-2.2">
+<hibernate-configuration xmlns="urn:nhibernate-configuration-2.2">
   <session-factory>
+    <!-- Intentamos por defecto conectar a una instancia nombrada (puede fallar y activar fallback a LocalDB) -->
     <property name="connection.provider">NHibernate.Connection.DriverConnectionProvider</property>
-    <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
     <property name="connection.driver_class">NHibernate.Driver.SqlClientDriver</property>
-    <!-- Example connection string: override in InitializeDb or use LocalDB -->
-    <property name="connection.connection_string">Data Source=(localdb)\MSSQLLocalDB;Integrated Security=True;Initial Catalog=ProjectDatabase;AttachDBFilename=|DataDirectory|\ProjectDatabase.mdf;</property>
-
+    <property name="dialect">NHibernate.Dialect.MsSql2012Dialect</property>
+    <property name="connection.connection_string">Server=localhost\SQLEXPRESS;Integrated Security=true;Initial Catalog=FLICKS_DB;</property>
     <property name="show_sql">true</property>
-    <property name="format_sql">true</property>
 
-    <!-- Mappings -->
-  <mapping file="Mappings/Usuario.hbm.xml" />
-  <mapping file="Mappings/Administrador.hbm.xml" />
-  <mapping file="Mappings/Pelicula.hbm.xml" />
-  <mapping file="Mappings/Resena.hbm.xml" />
-  <mapping file="Mappings/Lista.hbm.xml" />
-  <mapping file="Mappings/Reporte.hbm.xml" />
-  <mapping file="Mappings/Notificacion.hbm.xml" />
-  <mapping file="Mappings/Metrica.hbm.xml" />
-
+    <!-- Mappings: la ruta será resuelta por NHibernateHelper en tiempo de ejecución -->
+    <!-- Se deben listar los mappings relativos al proyecto -->
+  <mapping file="Infrastructure/NHibernate/Mappings/Usuario.hbm.xml" />
+  <mapping file="Infrastructure/NHibernate/Mappings/Administrador.hbm.xml" />
+  <mapping file="Infrastructure/NHibernate/Mappings/Pelicula.hbm.xml" />
+  <mapping file="Infrastructure/NHibernate/Mappings/Resena.hbm.xml" />
+  <mapping file="Infrastructure/NHibernate/Mappings/Lista.hbm.xml" />
+  <mapping file="Infrastructure/NHibernate/Mappings/Reporte.hbm.xml" />
+  <mapping file="Infrastructure/NHibernate/Mappings/Notificacion.hbm.xml" />
+  <mapping file="Infrastructure/NHibernate/Mappings/Metrica.hbm.xml" />
   </session-factory>
 </hibernate-configuration>

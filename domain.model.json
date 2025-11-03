@@ -1,127 +1,114 @@
 {
-  "info": {
-    "name": "FLICKS Domain",
-    "version": "1.0"
+  "metadata": {
+    "name": "FLICKS",
+    "source": "Dclases3.puml",
+    "generated": "2025-10-30"
   },
-  "enums": {
-    "TipoNotificacion": {
-      "values": ["LikeResenya", "Reporte", "Anuncio", "Otro"]
+  "entities": [
+    {
+      "name": "Usuario",
+      "properties": [
+        { "name": "Id", "type": "long", "nullable": false },
+        { "name": "Nombre", "type": "string", "nullable": false },
+        { "name": "Email", "type": "string", "nullable": false },
+        { "name": "Contrasena", "type": "string", "nullable": false },
+        { "name": "FotoPerfil", "type": "string", "nullable": true },
+        { "name": "Biografia", "type": "string", "nullable": true },
+        { "name": "ModoBlancoYNegro", "type": "bool", "nullable": false }
+      ],
+      "methods": ["new","modify","destroy","readAll","readID","readFilter"]
     },
-    "TipoLista": {
-      "values": ["Vista", "Pendiente", "MeGusta", "Otra"]
+    {
+      "name": "Administrador",
+      "properties": [
+        { "name": "Id", "type": "long", "nullable": false },
+        { "name": "Nombre", "type": "string", "nullable": false },
+        { "name": "Email", "type": "string", "nullable": false },
+        { "name": "Contrasena", "type": "string", "nullable": false }
+      ],
+      "methods": ["modify","readFilter"]
     },
-    "EstadoReporte": {
-      "values": ["Pendiente", "Resuelto", "Rechazado"]
+    {
+      "name": "Pelicula",
+      "properties": [
+        { "name": "Id", "type": "long", "nullable": false },
+        { "name": "Titulo", "type": "string", "nullable": false },
+        { "name": "TituloOriginal", "type": "string", "nullable": true },
+        { "name": "Anio", "type": "long", "nullable": true },
+        { "name": "Duracion", "type": "long", "nullable": true },
+        { "name": "Pais", "type": "string", "nullable": true },
+        { "name": "Director", "type": "string", "nullable": true },
+        { "name": "Genero", "type": "string", "nullable": true },
+        { "name": "Sinopsis", "type": "string", "nullable": true },
+        { "name": "ValoracionMedia", "type": "decimal", "nullable": true }
+      ],
+      "methods": ["new","modify","destroy","readAll","readID","readFilter"]
+    },
+    {
+      "name": "Resena",
+      "properties": [
+        { "name": "Id", "type": "long", "nullable": false },
+        { "name": "Puntuacion", "type": "long", "nullable": false },
+        { "name": "Comentario", "type": "string", "nullable": true },
+        { "name": "FechaPublicacion", "type": "DateTime", "nullable": false }
+      ],
+      "methods": ["new","modify","destroy","readAll","readID","readFilter"]
+    },
+    {
+      "name": "Lista",
+      "properties": [
+        { "name": "Id", "type": "long", "nullable": false },
+        { "name": "Nombre", "type": "string", "nullable": false },
+        { "name": "Tipo", "type": "tipoLista", "nullable": false }
+      ],
+      "methods": ["new","modify","destroy","readAll","readID"]
+    },
+    {
+      "name": "Reporte",
+      "properties": [
+        { "name": "Id", "type": "long", "nullable": false },
+        { "name": "Motivo", "type": "string", "nullable": false },
+        { "name": "Estado", "type": "estadoReporte", "nullable": false },
+        { "name": "Fecha", "type": "DateTime", "nullable": false }
+      ],
+      "methods": ["new","modify","destroy","readAll","readID","readFilter"]
+    },
+    {
+      "name": "Notificacion",
+      "properties": [
+        { "name": "Id", "type": "long", "nullable": false },
+        { "name": "Mensaje", "type": "string", "nullable": false },
+        { "name": "Fecha", "type": "DateTime", "nullable": false },
+        { "name": "Tipo", "type": "tipoNotificacion", "nullable": false },
+        { "name": "IdOrigen", "type": "long", "nullable": true }
+      ],
+      "methods": ["new","destroy","readAll","readID"]
+    },
+    {
+      "name": "Metrica",
+      "properties": [
+        { "name": "Id", "type": "long", "nullable": false },
+        { "name": "Estadisticas", "type": "string", "nullable": true },
+        { "name": "Fecha", "type": "DateTime", "nullable": false }
+      ],
+      "methods": ["readAll","readID"]
     }
-  },
-  "entities": {
-    "Usuario": {
-      "properties": {
-        "Id": { "type": "long", "nullable": false },
-        "Nombre": { "type": "string", "nullable": false },
-        "Email": { "type": "string", "nullable": false },
-        "Contrasena": { "type": "string", "nullable": false },
-        "FotoPerfil": { "type": "string", "nullable": true },
-        "Biografia": { "type": "string", "nullable": true },
-        "ModoBlancoYNegro": { "type": "bool", "nullable": false, "default": false }
-      },
-      "relationships": {
-        "Resenas": { "type": "one-to-many", "target": "Resena" },
-        "Listas": { "type": "one-to-many", "target": "Lista" },
-        "Notificaciones": { "type": "one-to-many", "target": "Notificacion" },
-        "Reportes": { "type": "one-to-many", "target": "Reporte" },
-        "Metrica": { "type": "one-to-one", "target": "Metrica", "nullable": true }
-      }
-    },
-    "Administrador": {
-      "properties": {
-        "Id": { "type": "long", "nullable": false },
-        "Nombre": { "type": "string", "nullable": false },
-        "Email": { "type": "string", "nullable": false },
-        "Contrasena": { "type": "string", "nullable": false }
-      },
-      "relationships": {
-        "ReportesResueltos": { "type": "one-to-many", "target": "Reporte" },
-        "PeliculasPublicadas": { "type": "one-to-many", "target": "Pelicula" }
-      }
-    },
-    "Pelicula": {
-      "properties": {
-        "Id": { "type": "long", "nullable": false },
-        "Titulo": { "type": "string", "nullable": false },
-        "TituloOriginal": { "type": "string", "nullable": true },
-        "Ano": { "type": "long", "nullable": true },
-        "Duracion": { "type": "long", "nullable": true },
-        "Pais": { "type": "string", "nullable": true },
-        "Director": { "type": "string", "nullable": true },
-        "Genero": { "type": "string", "nullable": true },
-        "Sinopsis": { "type": "string", "nullable": true },
-        "ValoracionMedia": { "type": "decimal", "nullable": true }
-      },
-      "relationships": {
-        "Resenas": { "type": "one-to-many", "target": "Resena" },
-        "Listas": { "type": "many-to-many", "target": "Lista" },
-        "Administrador": { "type": "many-to-one", "target": "Administrador", "nullable": true }
-      }
-    },
-    "Resena": {
-      "properties": {
-        "Id": { "type": "long", "nullable": false },
-        "Puntuacion": { "type": "int", "nullable": false },
-        "Comentario": { "type": "string", "nullable": true },
-        "FechaPublicacion": { "type": "date-time", "nullable": false }
-      },
-      "relationships": {
-        "Usuario": { "type": "many-to-one", "target": "Usuario", "nullable": false },
-        "Pelicula": { "type": "many-to-one", "target": "Pelicula", "nullable": false },
-        "Reporte": { "type": "one-to-one", "target": "Reporte", "nullable": true }
-      }
-    },
-    "Lista": {
-      "properties": {
-        "Id": { "type": "long", "nullable": false },
-        "Nombre": { "type": "string", "nullable": false },
-        "Tipo": { "type": "TipoLista", "nullable": false }
-      },
-      "relationships": {
-        "Usuario": { "type": "many-to-one", "target": "Usuario", "nullable": false },
-        "Peliculas": { "type": "many-to-many", "target": "Pelicula" }
-      }
-    },
-    "Reporte": {
-      "properties": {
-        "Id": { "type": "long", "nullable": false },
-        "Motivo": { "type": "string", "nullable": false },
-        "Estado": { "type": "EstadoReporte", "nullable": false },
-        "Fecha": { "type": "date-time", "nullable": false }
-      },
-      "relationships": {
-        "Usuario": { "type": "many-to-one", "target": "Usuario", "nullable": false },
-        "Administrador": { "type": "many-to-one", "target": "Administrador", "nullable": true },
-        "Resena": { "type": "many-to-one", "target": "Resena", "nullable": true }
-      }
-    },
-    "Notificacion": {
-      "properties": {
-        "Id": { "type": "long", "nullable": false },
-        "Mensaje": { "type": "string", "nullable": false },
-        "Fecha": { "type": "date-time", "nullable": false },
-        "Tipo": { "type": "TipoNotificacion", "nullable": false },
-        "IdOrigen": { "type": "long", "nullable": true }
-      },
-      "relationships": {
-        "Usuario": { "type": "many-to-one", "target": "Usuario", "nullable": false }
-      }
-    },
-    "Metrica": {
-      "properties": {
-        "Id": { "type": "long", "nullable": false },
-        "Estadisticas": { "type": "string", "nullable": false },
-        "Fecha": { "type": "date-time", "nullable": false }
-      },
-      "relationships": {
-        "Usuario": { "type": "one-to-one", "target": "Usuario", "nullable": false }
-      }
-    }
-  }
+  ],
+  "enums": [
+    { "name": "tipoNotificacion", "values": ["LikeResenya","Reporte","Anuncio","Otro"] },
+    { "name": "tipoLista", "values": ["Vista","Pendiente","MeGusta","Otra"] },
+    { "name": "estadoReporte", "values": ["Pendiente","Resuelto","Rechazado"] }
+  ],
+  "relations": [
+    { "from": "Usuario", "to": "Resena", "multiplicity": "1..*", "label": "escribe" },
+    { "from": "Usuario", "to": "Lista", "multiplicity": "1..*", "label": "crea" },
+    { "from": "Usuario", "to": "Notificacion", "multiplicity": "1..*", "label": "recibe" },
+    { "from": "Usuario", "to": "Reporte", "multiplicity": "1..*", "label": "realiza" },
+    { "from": "Administrador", "to": "Reporte", "multiplicity": "1..*", "label": "resuelve" },
+    { "from": "Administrador", "to": "Pelicula", "multiplicity": "1..*", "label": "publica" },
+    { "from": "Pelicula", "to": "Resena", "multiplicity": "1..*", "label": "tiene" },
+    { "from": "Lista", "to": "Pelicula", "multiplicity": "0..*..*", "label": "contiene" },
+    { "from": "Reporte", "to": "Resena", "multiplicity": "0..1..1", "label": "sobre" },
+    { "from": "Metrica", "to": "Usuario", "multiplicity": "1..1", "label": "consulta" }
+  ]
 }

@@ -1,6 +1,6 @@
 namespace ApplicationCore.Domain.Enums
 {
-    public enum TipoNotificacion
+    public enum tipoNotificacion
     {
         LikeResenya,
         Reporte,

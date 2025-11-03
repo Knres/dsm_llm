@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ApplicationCore" namespace="ApplicationCore.Domain.EN">
-  <class name="Reporte" table="Reporte">
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ApplicationCore.Domain.EN.Reporte, ApplicationCore" table="Reporte">
     <id name="Id" column="Id" type="long">
       <generator class="hilo">
         <param name="table">NHibernateUniqueKey</param>
@@ -8,12 +8,11 @@
         <param name="max_lo">100</param>
       </generator>
     </id>
-    <property name="Motivo" column="Motivo" />
-    <property name="Estado" column="Estado" />
-    <property name="Fecha" column="Fecha" />
+    <property name="Motivo" />
+    <property name="Estado" />
+    <property name="Fecha" />
 
-    <many-to-one name="Usuario" column="Usuario_Id" class="Usuario" not-null="true" />
-    <many-to-one name="Administrador" column="Administrador_Id" class="Administrador" not-null="false" />
-    <many-to-one name="Resena" column="Resena_Id" class="Resena" not-null="false" />
+    <many-to-one name="Autor" class="ApplicationCore.Domain.EN.Usuario, ApplicationCore" column="AutorId" />
+    <many-to-one name="SobreResena" class="ApplicationCore.Domain.EN.Resena, ApplicationCore" column="ResenaId" />
   </class>
 </hibernate-mapping>

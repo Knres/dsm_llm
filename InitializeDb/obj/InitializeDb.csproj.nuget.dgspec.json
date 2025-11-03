@@ -121,7 +121,7 @@
           "dependencies": {
             "NHibernate": {
               "target": "Package",
-              "version": "[5.4.8, )"
+              "version": "[5.3.10, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",
@@ -203,7 +203,7 @@
           "dependencies": {
             "NHibernate": {
               "target": "Package",
-              "version": "[5.4.8, )"
+              "version": "[5.3.10, )"
             },
             "System.Data.SqlClient": {
               "target": "Package",

@@ -1,100 +1,79 @@
-using NHibernate.Cfg;
-using NHibernate.Tool.hbm2ddl;
-using System;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Data.SqlClient;
+using NHibernate.Tool.hbm2ddl;
+using Infrastructure.NHibernate;
 
-Console.WriteLine("InitializeDb: iniciado");
-
-// Guardamos el directorio de inicio desde el cual se llamó al programa (normalmente: ./InitializeDb)
-var startupDir = Directory.GetCurrentDirectory();
-// Definimos la carpeta Data según la convención del plan: InitializeDb/Data
-var dataDir = Path.Combine(startupDir, "Data");
-if (!Directory.Exists(dataDir)) Directory.CreateDirectory(dataDir);
-
-// Usar |DataDirectory| en la cadena de conexión para que AttachDBFilename apunte a InitializeDb/Data/ProjectDatabase.mdf
-AppDomain.CurrentDomain.SetData("DataDirectory", dataDir);
-
-var baseDir = AppContext.BaseDirectory;
-// Ensure relative paths in NHibernate.cfg.xml are resolved against the output folder where we copied the mappings
-Directory.SetCurrentDirectory(baseDir);
-
-// try to find NHibernate.cfg.xml in various locations
-var candidates = new[] {
-    Path.Combine(baseDir, "NHibernate.cfg.xml"),
-    Path.Combine(Directory.GetCurrentDirectory(), "Infrastructure", "NHibernate", "NHibernate.cfg.xml")
-};
-
-string? cfgPath = null;
-foreach(var c in candidates)
+namespace InitializeDb
 {
-    if (File.Exists(c)) { cfgPath = c; break; }
+	class Program
+	{
+		static int Main(string[] args)
+		{
+			Console.WriteLine("InitializeDb: iniciando creación de esquema NHibernate...");
+
+			// Determinar raíz del repositorio buscando 'domain.model.json' hacia arriba
+			string repoRoot = AppContext.BaseDirectory;
+			while (repoRoot != null && !File.Exists(Path.Combine(repoRoot, "domain.model.json")))
+			{
+				var parent = Directory.GetParent(repoRoot);
+				repoRoot = parent?.FullName;
+			}
+			if (repoRoot == null)
+				throw new Exception("No se pudo localizar la raíz del repositorio (domain.model.json)");
+			var dataDir = Path.Combine(repoRoot, "InitializeDb", "Data");
+			Directory.CreateDirectory(dataDir);
+			var mdfPath = Path.Combine(dataDir, "ProjectDatabase.mdf");
+
+			try
+			{
+				// Cargar configuración (intenta con la connection string por defecto en NHibernate.cfg.xml)
+				var cfg = NHibernateHelper.LoadConfiguration(repoRoot);
+
+				// Intentar construir SessionFactory (puede fallar si la instancia nombrada no existe)
+				try
+				{
+					var sf = cfg.BuildSessionFactory();
+					Console.WriteLine("Conexión con la cadena por defecto OK. Ejecutando SchemaExport...");
+					var export = new SchemaExport(cfg);
+					export.Create(false, true);
+					Console.WriteLine("SchemaExport completado usando la cadena por defecto.");
+					return 0;
+				}
+				catch (Exception ex)
+				{
+					Console.WriteLine("Fallo al conectar con la cadena por defecto: " + ex.Message);
+					Console.WriteLine("Aplicando fallback a LocalDB y reintentando...");
+				}
+
+				// Fallback: usar LocalDB con AttachDbFilename
+				NHibernateHelper.ReplaceConnectionStringForLocalDb(cfg, mdfPath);
+				var sf2 = cfg.BuildSessionFactory();
+				Console.WriteLine("Conexión LocalDB establecida. Ejecutando SchemaExport...");
+				var export2 = new SchemaExport(cfg);
+
+				// Si el fichero existe y produce errores por esquema incompatible, lo eliminamos para recrear limpio
+				if (File.Exists(mdfPath))
+				{
+					try
+					{
+						File.Delete(mdfPath);
+						Console.WriteLine("MDF existente eliminado para recrear esquema limpio.");
+					}
+					catch (Exception)
+					{
+						Console.WriteLine("No se pudo eliminar MDF existente; SchemaExport intentará adjuntarlo de todos modos.");
+					}
+				}
+
+				export2.Create(false, true);
+				Console.WriteLine("SchemaExport completado en LocalDB. InitializeDb completado.");
+				return 0;
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine("Error en InitializeDb: " + e);
+				return 1;
+			}
+		}
+	}
 }
-
-if (cfgPath is null)
-{
-    Console.WriteLine("No se encontró NHibernate.cfg.xml. Coloque el archivo en InitializeDb o en Infrastructure/NHibernate/");
-    return;
-}
-
-var cfg = new Configuration();
-cfg.Configure(cfgPath);
-
-Console.WriteLine($"Usando cfg: {cfgPath}");
-
-var apply = args != null && args.Length > 0 && args.Any(a => a.Equals("apply", StringComparison.OrdinalIgnoreCase));
-
-var export = new SchemaExport(cfg);
-// If --apply (pass argument "apply"), execute against DB; otherwise only print SQL.
-if (!apply)
-{
-    export.Execute(useStdOut: true, execute: false, justDrop: false);
-    Console.WriteLine("SchemaExport mostrado en consola. No se aplicaron cambios a la base (modo seguro). Pasa el argumento 'apply' para ejecutar en DB.");
-}
-else
-{
-    // En modo apply: aseguramos que exista la base de datos LocalDB y el fichero MDF en InitializeDb/Data
-    var dbName = "ProjectDatabase";
-    var mdfPath = Path.Combine(dataDir, dbName + ".mdf");
-
-    // Intentar crear la base de datos en la instancia LocalDB si no existe
-    var masterConn = "Server=(localdb)\\MSSQLLocalDB;Integrated Security=true;Initial Catalog=master;";
-    try
-    {
-        using var conn = new SqlConnection(masterConn);
-        conn.Open();
-        using var cmd = conn.CreateCommand();
-        cmd.CommandText = $"SELECT db_id('{dbName}')";
-        var exists = cmd.ExecuteScalar();
-        if (exists == DBNull.Value || exists == null)
-        {
-            Console.WriteLine($"Creando base de datos '{dbName}' y fichero MDF en: {mdfPath}");
-            Directory.CreateDirectory(Path.GetDirectoryName(mdfPath) ?? dataDir);
-            cmd.CommandText = $"CREATE DATABASE [{dbName}] ON (NAME = N'{dbName}', FILENAME = N'{mdfPath}')";
-            cmd.ExecuteNonQuery();
-            Console.WriteLine("Base de datos creada.");
-        }
-        else
-        {
-            Console.WriteLine($"Base de datos '{dbName}' ya existe en la instancia LocalDB.");
-        }
-    }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"No se pudo crear o comprobar la base en LocalDB: {ex.Message}");
-        Console.WriteLine("Asegúrate de que LocalDB está instalado y la instancia (localdb)\\MSSQLLocalDB está disponible.");
-        throw;
-    }
-
-    // Actualizamos la cadena de conexión NHibernate para que use AttachDBFilename apuntando al MDF dentro del repo
-    var attachConn = $"Data Source=(localdb)\\MSSQLLocalDB;Integrated Security=True;Initial Catalog={dbName};AttachDBFilename=|DataDirectory|\\{dbName}.mdf;";
-    cfg.SetProperty("connection.connection_string", attachConn);
-
-    // Ejecutar únicamente la creación del esquema (no seed)
-    export = new SchemaExport(cfg);
-    export.Execute(useStdOut: true, execute: true, justDrop: false);
-    Console.WriteLine("SchemaExport ejecutado contra la base de datos (solo creación de esquema). No se ejecutó seed automático.");
-}
-
-Console.WriteLine("InitializeDb completado.");

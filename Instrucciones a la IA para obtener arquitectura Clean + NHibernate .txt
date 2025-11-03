@@ -1,8 +1,0 @@
-Instrucciones a la IA para obtener arquitectura Clean + NHibernate 
-
-
-Se crea una carpeta en VS Code (con el Github copilot pro instalado). Dentro se introducen el modelo de dominio de plantUML (.puml) y la descripción de la arquitectura Clean a obtener (solution.plan.md). 
-
-En el chat se indica el siguiente prompt:
-
-Deseo que a partir del modelo de dominio.puml en plantUML, generes un domain.model.json. A partir de ese punto, sigas todas las instrucciones especificadas en el fichero solution.plan para generar una arquitectura clean basada del modelo de dominio definido en domain.model.json. Te doy permisos para generar todo sin preguntar

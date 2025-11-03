@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ApplicationCore" namespace="ApplicationCore.Domain.EN">
-  <class name="Metrica" table="Metrica">
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ApplicationCore.Domain.EN.Metrica, ApplicationCore" table="Metrica">
     <id name="Id" column="Id" type="long">
       <generator class="hilo">
         <param name="table">NHibernateUniqueKey</param>
@@ -8,9 +8,9 @@
         <param name="max_lo">100</param>
       </generator>
     </id>
-    <property name="Estadisticas" column="Estadisticas" />
-    <property name="Fecha" column="Fecha" />
+    <property name="Estadisticas" />
+    <property name="Fecha" />
 
-    <many-to-one name="Usuario" column="Usuario_Id" class="Usuario" not-null="true" unique="true" />
+    <many-to-one name="Usuario" class="ApplicationCore.Domain.EN.Usuario, ApplicationCore" column="UsuarioId" />
   </class>
 </hibernate-mapping>

@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ApplicationCore" namespace="ApplicationCore.Domain.EN">
-  <class name="Notificacion" table="Notificacion">
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ApplicationCore.Domain.EN.Notificacion, ApplicationCore" table="Notificacion">
     <id name="Id" column="Id" type="long">
       <generator class="hilo">
         <param name="table">NHibernateUniqueKey</param>
@@ -8,11 +8,11 @@
         <param name="max_lo">100</param>
       </generator>
     </id>
-    <property name="Mensaje" column="Mensaje" />
-    <property name="Fecha" column="Fecha" />
-    <property name="Tipo" column="Tipo" />
-    <property name="IdOrigen" column="IdOrigen" />
+    <property name="Mensaje" />
+    <property name="Fecha" />
+    <property name="Tipo" />
+    <property name="IdOrigen" />
 
-    <many-to-one name="Usuario" column="Usuario_Id" class="Usuario" not-null="true" />
+    <many-to-one name="Destinatario" class="ApplicationCore.Domain.EN.Usuario, ApplicationCore" column="DestinatarioId" />
   </class>
 </hibernate-mapping>

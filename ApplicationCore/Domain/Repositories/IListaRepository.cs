@@ -1,10 +1,14 @@
-using ApplicationCore.Domain.EN;
 using System.Collections.Generic;
+using ApplicationCore.Domain.EN;
 
 namespace ApplicationCore.Domain.Repositories
 {
-    public interface IListaRepository : IRepository<Lista, long>
+    public interface IListaRepository
     {
-        IList<Lista> ReadFilter(string filtro);
+        Lista GetById(long id);
+        IEnumerable<Lista> GetAll();
+        void New(Lista entity);
+        void Modify(Lista entity);
+        void Destroy(long id);
     }
 }

@@ -1,10 +1,15 @@
-using ApplicationCore.Domain.EN;
 using System.Collections.Generic;
+using ApplicationCore.Domain.EN;
 
 namespace ApplicationCore.Domain.Repositories
 {
-    public interface IUsuarioRepository : IRepository<Usuario, long>
+    public interface IUsuarioRepository
     {
-        IList<Usuario> ReadFilter(string filtro);
+        Usuario GetById(long id);
+        IEnumerable<Usuario> GetAll();
+        void New(Usuario entity);
+        void Modify(Usuario entity);
+        void Destroy(long id);
+        IEnumerable<Usuario> FindByFilter(object filter);
     }
 }

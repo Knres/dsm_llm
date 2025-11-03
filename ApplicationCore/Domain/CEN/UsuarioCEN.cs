@@ -1,50 +1,35 @@
+using System.Collections.Generic;
 using ApplicationCore.Domain.EN;
 using ApplicationCore.Domain.Repositories;
-using System.Collections.Generic;
 
 namespace ApplicationCore.Domain.CEN
 {
     public class UsuarioCEN
     {
         private readonly IUsuarioRepository _repo;
-        private readonly IUnitOfWork _uow;
 
-        public UsuarioCEN(IUsuarioRepository repo, IUnitOfWork uow)
+        public UsuarioCEN(IUsuarioRepository repo)
         {
             _repo = repo;
-            _uow = uow;
         }
 
-        public Usuario Create(string nombre, string email, string contrasena, bool modoBlancoYNegro = false, string? fotoPerfil = null, string? biografia = null)
+        public void Crear(Usuario u)
         {
-            var e = new Usuario
-            {
-                Nombre = nombre,
-                Email = email,
-                Contrasena = contrasena,
-                ModoBlancoYNegro = modoBlancoYNegro,
-                FotoPerfil = fotoPerfil,
-                Biografia = biografia
-            };
-            _repo.New(e);
-            _uow.SaveChanges();
-            return e;
+            // Validaciones de negocio ligeras pueden ir aquí
+            _repo.New(u);
         }
 
-        public void Modify(Usuario usuario)
+        public void Modificar(Usuario u)
         {
-            _repo.Modify(usuario);
-            _uow.SaveChanges();
+            _repo.Modify(u);
         }
 
-        public void Destroy(Usuario usuario)
+        public void Eliminar(long id)
         {
-            _repo.Destroy(usuario);
-            _uow.SaveChanges();
+            _repo.Destroy(id);
         }
 
-        public IList<Usuario> ReadAll() => _repo.DameTodos();
-        public Usuario? ReadById(long id) => _repo.DamePorOID(id);
-        public IList<Usuario> ReadFilter(string filtro) => _repo.ReadFilter(filtro);
+        public IEnumerable<Usuario> LeerTodos() => _repo.GetAll();
+        public Usuario LeerPorId(long id) => _repo.GetById(id);
     }
 }

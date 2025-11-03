@@ -1,30 +1,29 @@
-using NHibernate;
-using NHibernate.Cfg;
 using System;
 using System.IO;
+using System.Linq;
+using NHibernate.Cfg;
 
 namespace Infrastructure.NHibernate
 {
     public static class NHibernateHelper
     {
-        public static ISessionFactory BuildSessionFactory(string? cfgFile = null)
+        public static Configuration LoadConfiguration(string basePath)
         {
-            var configuration = new Configuration();
-            var baseDir = AppContext.BaseDirectory;
-            var cfgPath = cfgFile ?? Path.Combine(baseDir, "NHibernate.cfg.xml");
-            if (!File.Exists(cfgPath))
-            {
-                // try relative to project folder
-                cfgPath = Path.Combine(Directory.GetCurrentDirectory(), "Infrastructure", "NHibernate", "NHibernate.cfg.xml");
-            }
+            var cfgPath = Path.Combine(basePath, "Infrastructure", "NHibernate", "NHibernate.cfg.xml");
+            if (!File.Exists(cfgPath)) throw new FileNotFoundException("NHibernate.cfg.xml no encontrado.", cfgPath);
 
-            configuration.Configure(cfgPath);
+            var cfg = new Configuration();
+            // Configurar directamente desde el fichero. El NHibernate.cfg.xml contiene rutas relativas correctas
+            cfg.Configure(cfgPath);
+            return cfg;
+        }
 
-            // Fix mapping paths if needed (when resources are files)
-            // NHibernate will try to load mappings declared in cfg; if paths are relative to project, rewrite those to absolute
-            // (This is a minimal helper; projects can extend to more robust rewrites.)
-
-            return configuration.BuildSessionFactory();
+        public static string ReplaceConnectionStringForLocalDb(Configuration cfg, string mdfPath)
+        {
+            // Construir connection string para LocalDB que adjunte el MDF
+            var attach = $"Data Source=(localdb)\\MSSQLLocalDB;AttachDbFilename={mdfPath};Integrated Security=True;Connect Timeout=30;MultipleActiveResultSets=True;";
+            cfg.SetProperty("connection.connection_string", attach);
+            return attach;
         }
     }
 }

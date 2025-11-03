@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ApplicationCore" namespace="ApplicationCore.Domain.EN">
-  <class name="Pelicula" table="Pelicula">
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ApplicationCore.Domain.EN.Pelicula, ApplicationCore" table="Pelicula">
     <id name="Id" column="Id" type="long">
       <generator class="hilo">
         <param name="table">NHibernateUniqueKey</param>
@@ -8,26 +8,19 @@
         <param name="max_lo">100</param>
       </generator>
     </id>
-    <property name="Titulo" column="Titulo" />
-    <property name="TituloOriginal" column="TituloOriginal" />
-    <property name="Ano" column="Ano" />
-    <property name="Duracion" column="Duracion" />
-    <property name="Pais" column="Pais" />
-    <property name="Director" column="Director" />
-    <property name="Genero" column="Genero" />
-    <property name="Sinopsis" column="Sinopsis" />
-    <property name="ValoracionMedia" column="ValoracionMedia" />
+    <property name="Titulo" />
+    <property name="TituloOriginal" />
+    <property name="Anio" />
+    <property name="Duracion" />
+    <property name="Pais" />
+    <property name="Director" />
+    <property name="Genero" />
+    <property name="Sinopsis" />
+    <property name="ValoracionMedia" />
 
-    <bag name="Resenas" inverse="true" cascade="all-delete-orphan">
-      <key column="Pelicula_Id" />
-      <one-to-many class="Resena" />
+    <bag name="Reseñas" inverse="true" cascade="all-delete-orphan" lazy="true">
+      <key column="PeliculaId" />
+      <one-to-many class="ApplicationCore.Domain.EN.Resena, ApplicationCore" />
     </bag>
-
-    <bag name="Listas" table="Lista_Pelicula" cascade="none">
-      <key column="Pelicula_Id" />
-      <many-to-many class="Lista" column="Lista_Id" />
-    </bag>
-
-    <many-to-one name="Administrador" column="Administrador_Id" class="Administrador" not-null="false" />
   </class>
 </hibernate-mapping>

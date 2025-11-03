@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ApplicationCore" namespace="ApplicationCore.Domain.EN">
-  <class name="Administrador" table="Administrador">
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ApplicationCore.Domain.EN.Administrador, ApplicationCore" table="Administrador">
     <id name="Id" column="Id" type="long">
       <generator class="hilo">
         <param name="table">NHibernateUniqueKey</param>
@@ -8,18 +8,9 @@
         <param name="max_lo">100</param>
       </generator>
     </id>
-    <property name="Nombre" column="Nombre" />
-    <property name="Email" column="Email" />
-    <property name="Contrasena" column="Contrasena" />
-
-    <bag name="ReportesResueltos" inverse="true">
-      <key column="Administrador_Id" />
-      <one-to-many class="Reporte" />
-    </bag>
-
-    <bag name="PeliculasPublicadas" inverse="true">
-      <key column="Administrador_Id" />
-      <one-to-many class="Pelicula" />
-    </bag>
+    <property name="Nombre" />
+    <property name="Email" />
+    <property name="Contrasena" />
+    <!-- Relaciones a Reportes/Peliculas no mapeadas bidireccionalmente en esta iteración -->
   </class>
 </hibernate-mapping>

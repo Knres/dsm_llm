@@ -1,6 +1,6 @@
 namespace ApplicationCore.Domain.Enums
 {
-    public enum EstadoReporte
+    public enum estadoReporte
     {
         Pendiente,
         Resuelto,

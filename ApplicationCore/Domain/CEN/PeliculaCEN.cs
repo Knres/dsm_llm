@@ -1,52 +1,34 @@
+using System.Collections.Generic;
 using ApplicationCore.Domain.EN;
 using ApplicationCore.Domain.Repositories;
-using System.Collections.Generic;
 
 namespace ApplicationCore.Domain.CEN
 {
     public class PeliculaCEN
     {
         private readonly IPeliculaRepository _repo;
-        private readonly IUnitOfWork _uow;
 
-        public PeliculaCEN(IPeliculaRepository repo, IUnitOfWork uow)
+        public PeliculaCEN(IPeliculaRepository repo)
         {
             _repo = repo;
-            _uow = uow;
         }
 
-        public Pelicula Create(string titulo, string? tituloOriginal = null, long? ano = null, long? duracion = null, string? pais = null, string? director = null, string? genero = null, string? sinopsis = null)
+        public void Crear(Pelicula p)
         {
-            var p = new Pelicula
-            {
-                Titulo = titulo,
-                TituloOriginal = tituloOriginal,
-                Ano = ano,
-                Duracion = duracion,
-                Pais = pais,
-                Director = director,
-                Genero = genero,
-                Sinopsis = sinopsis
-            };
             _repo.New(p);
-            _uow.SaveChanges();
-            return p;
         }
 
-        public void Modify(Pelicula pelicula)
+        public void Modificar(Pelicula p)
         {
-            _repo.Modify(pelicula);
-            _uow.SaveChanges();
+            _repo.Modify(p);
         }
 
-        public void Destroy(Pelicula pelicula)
+        public void Eliminar(long id)
         {
-            _repo.Destroy(pelicula);
-            _uow.SaveChanges();
+            _repo.Destroy(id);
         }
 
-        public IList<Pelicula> ReadAll() => _repo.DameTodos();
-        public Pelicula? ReadById(long id) => _repo.DamePorOID(id);
-        public IList<Pelicula> ReadFilter(string filtro) => _repo.ReadFilter(filtro);
+        public IEnumerable<Pelicula> LeerTodos() => _repo.GetAll();
+        public Pelicula LeerPorId(long id) => _repo.GetById(id);
     }
 }

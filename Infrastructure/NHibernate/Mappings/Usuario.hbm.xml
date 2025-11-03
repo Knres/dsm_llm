@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="utf-8" ?>
-<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2" assembly="ApplicationCore" namespace="ApplicationCore.Domain.EN">
-  <class name="Usuario" table="Usuario">
+<?xml version="1.0" encoding="utf-8"?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <class name="ApplicationCore.Domain.EN.Usuario, ApplicationCore" table="Usuario">
     <id name="Id" column="Id" type="long">
       <generator class="hilo">
         <param name="table">NHibernateUniqueKey</param>
@@ -8,33 +8,31 @@
         <param name="max_lo">100</param>
       </generator>
     </id>
-    <property name="Nombre" column="Nombre" />
-    <property name="Email" column="Email" />
-    <property name="Contrasena" column="Contrasena" />
-    <property name="FotoPerfil" column="FotoPerfil" />
-    <property name="Biografia" column="Biografia" />
-    <property name="ModoBlancoYNegro" column="ModoBlancoYNegro" />
+    <property name="Nombre" />
+    <property name="Email" />
+    <property name="Contrasena" />
+    <property name="FotoPerfil" />
+    <property name="Biografia" />
+    <property name="ModoBlancoYNegro" />
 
-    <bag name="Resenas" inverse="true" cascade="all-delete-orphan">
-      <key column="Usuario_Id" />
-      <one-to-many class="Resena" />
+    <bag name="Reseñas" inverse="true" cascade="all-delete-orphan" lazy="true">
+      <key column="AutorId" />
+      <one-to-many class="ApplicationCore.Domain.EN.Resena, ApplicationCore" />
     </bag>
 
-    <bag name="Listas" inverse="true" cascade="all-delete-orphan">
-      <key column="Usuario_Id" />
-      <one-to-many class="Lista" />
+    <bag name="Listas" inverse="true" cascade="all-delete-orphan" lazy="true">
+      <key column="CreadorId" />
+      <one-to-many class="ApplicationCore.Domain.EN.Lista, ApplicationCore" />
     </bag>
 
-    <bag name="Notificaciones" inverse="true" cascade="all-delete-orphan">
-      <key column="Usuario_Id" />
-      <one-to-many class="Notificacion" />
+    <bag name="Notificaciones" inverse="true" cascade="all-delete-orphan" lazy="true">
+      <key column="DestinatarioId" />
+      <one-to-many class="ApplicationCore.Domain.EN.Notificacion, ApplicationCore" />
     </bag>
 
-    <bag name="Reportes" inverse="true" cascade="all-delete-orphan">
-      <key column="Usuario_Id" />
-      <one-to-many class="Reporte" />
+    <bag name="Reportes" inverse="true" cascade="all-delete-orphan" lazy="true">
+      <key column="AutorId" />
+      <one-to-many class="ApplicationCore.Domain.EN.Reporte, ApplicationCore" />
     </bag>
-
-    <one-to-one name="Metrica" class="Metrica" property-ref="Usuario" cascade="all" />
   </class>
 </hibernate-mapping>

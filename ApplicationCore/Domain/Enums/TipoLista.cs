@@ -1,6 +1,6 @@
 namespace ApplicationCore.Domain.Enums
 {
-    public enum TipoLista
+    public enum tipoLista
     {
         Vista,
         Pendiente,

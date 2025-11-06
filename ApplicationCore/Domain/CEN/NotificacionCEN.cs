@@ -50,5 +50,25 @@ namespace ApplicationCore.Domain.CEN
         {
             return _notificacionRepository.ReadAll();
         }
+
+        /// <summary>
+        /// Cambia el estado de una notificación y sincroniza los campos relacionados (Leida, FechaLeida).
+        /// Operación transaccional: persiste el cambio inmediatamente.
+        /// </summary>
+        /// <param name="notificacionId">ID de la notificación</param>
+        /// <param name="nuevoEstado">Nuevo estado (estadoNotificacion)</param>
+        public virtual void CambiarEstado(long notificacionId, estadoNotificacion nuevoEstado)
+        {
+            var notificacion = _notificacionRepository.ReadById(notificacionId);
+            if (notificacion == null)
+                throw new Exception($"Notificación {notificacionId} no encontrada");
+
+            notificacion.EstadoNotificacion = nuevoEstado;
+            notificacion.Leida = nuevoEstado == estadoNotificacion.Leida;
+            notificacion.FechaLeida = notificacion.Leida ? (DateTime?)DateTime.Now : null;
+
+            _notificacionRepository.Modify(notificacion);
+            _unitOfWork.SaveChanges();
+        }
     }
 }

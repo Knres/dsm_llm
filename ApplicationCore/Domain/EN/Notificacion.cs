@@ -12,6 +12,9 @@ namespace ApplicationCore.Domain.EN
         public virtual bool Leida { get; set; }
         public virtual DateTime? FechaLeida { get; set; }
 
+        // Nuevo atributo para representar el estado de la notificación
+        public virtual Enums.estadoNotificacion EstadoNotificacion { get; set; } = Enums.estadoNotificacion.NoLeida;
+
     public virtual Usuario Destinatario { get; set; } = null!;
     }
 }

@@ -12,6 +12,9 @@
     <property name="Fecha" />
     <property name="Tipo" />
     <property name="IdOrigen" />
+  <property name="Leida" />
+  <property name="FechaLeida" />
+  <property name="EstadoNotificacion" type="ApplicationCore.Domain.Enums.estadoNotificacion, ApplicationCore" />
 
     <many-to-one name="Destinatario" class="ApplicationCore.Domain.EN.Usuario, ApplicationCore" column="DestinatarioId" />
   </class>

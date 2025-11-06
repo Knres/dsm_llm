@@ -1,4 +1,4 @@
-@startuml FLICKS
+@startuml
 
 title FLICKS Domain
 ' ===============================================================
@@ -28,21 +28,21 @@ package "FLICKS" {
   ' ========================================
   ' ENUMS
   ' ========================================
-  enum TipoNotificacion {
+  enum tipoNotificacion {
     likeResenya : 1
     reporte : 2
     anuncio : 3
     otro : 4
   }
 
-  enum TipoLista {
+  enum tipoLista {
     vista : 1
     pendiente : 2
     meGusta : 3
     otra : 4
   }
 
-  enum EstadoReporte {
+  enum estadoReporte {
     pendiente : 1
     resuelto : 2
     rechazado : 3
@@ -53,144 +53,130 @@ package "FLICKS" {
   ' ========================================
 
   class Usuario {
-    - Id : Long
-    - Nombre : String
-    - Email : String
-    - FotoPerfil : String?    ' opcional en el EN
-    - Biografia : String?     ' opcional en el EN
-    - ModoBlancoYNegro : Boolean
-    - Contrasena : String
-    + New()
-    + Modify()
-    + Destroy()
-    + ReadAll()
-    + ReadId()
-    + CrearResenaActualizarVM()
-    + ModoBlancoYN()
-    + Login()
+    - id : Long
+    - nombre : String
+    - email : String
+    - fotoPerfil : String
+    - biografia : String
+    - modoBlancoYNegro : Boolean
+    - pass : Password
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+    + crearResenyaActualizarVM()
+    + modoBlancoYN()
+    + login()
   }
 
   class Administrador {
-    - Id : Long
-    - Nombre : String
-    - Email : String
-    - Contrasena : String
-    + New()
-    + Modify()
-    + Login()
-    + Destroy()
-    + ReadAll()
-    + ReadId()
-    + ResolverReporteEnviarNotificacion()
+    - id : Long
+    - nombre : String
+    - email : String
+    - pass : Password
+    + new()
+    + modify()
+    + login()
+    + destroy()
+    + readAll()
+    + readID()
+    + resolverReporteEnviarNotificacion()
   }
 
   class Pelicula {
-    - Id : Long
-    - Titulo : String
-    - TituloOriginal : String
-    - Anyo : Long?            ' nullable en el EN
-    - Duracion : Long?        ' nullable en el EN
-    - Pais : String
-    - Director : String
-    - Genero : String
-    - Sinopsis : String
-    - ValoracionMedia : Decimal? ' nullable en el EN
-    + New()
-    + Modify()
-    + Destroy()
-    + ReadAll()
-    + ReadId()
-    + ReadFilterGenero()
-    + ReadFilterValoracion()
-    + ReadFilterAnyo()
-    + ReadFilterTitulo()
-    + ContarResenas()
-    + CalcularValoracionMedia()
+    - id : Long
+    - titulo : String
+    - tituloOriginal : String
+    - anyo : Long
+    - duracion : Long
+    - pais : String
+    - director : String
+    - sinopsis : String
+    - valoracionMedia : Decimal
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+    + readFilterGenero()
+    + readFilterValoracion()
+    + readFilterAnyo()
+    + readFilterTitulo()
+    + contarResenyas()
+    + calcularValoracionMedia()
   }
 
-  class Resena {
-    - Id : Long
-    - Valoracion : Decimal
-    - Comentario : String
-    - FechaPublicacion : DateTime
-    + New()
-    + Modify()
-    + Destroy()
-    + ReadAll()
-    + ReadId()
-    + ReadFilterUsuario()
-    + ReadFilterValoracion()
-    + ReadFilterByPelicula()
-    + Crear(valoracion : Decimal, comentario : String, fechaPublicacion : DateTime)
-    + Modificar(id : Long, valoracion : Decimal, comentario : String)
+  class Resenya {
+    - id : Long
+    - punctuation : Long
+    - comentario : String
+    - fecha : DateTime
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+    + readFilterUsuario()
+    + readFilterValoracion()
+    + readFilterByPelicula()
   }
 
   class Lista {
-    - Id : Long
-    - Nombre : String
-    - Tipo : TipoLista
-    - Peliculas : List<Pelicula>
-    - Creador : Usuario
-    + New()
-    + Modify()
-    + Destroy()
-    + ReadAll()
-    + ReadId()
-    + AnyadirPelicula()
+    - id : Long
+    - nombre : String
+    - tipo : tipoLista
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+    + anyadirPelicula()
   }
 
   class Reporte {
-    - Id : Long
-    - Motivo : String
-    - Estado : EstadoReporte
-    - Fecha : DateTime
-    - Autor : Usuario
-    - SobreResena : Resena
-    + New()
-    + Modify()
-    + Destroy()
-    + ReadAll()
-    + ReadId()
-    + ReadFilterEstado()
+    - id : Long
+    - motivo : String
+    - estado : String
+    - fecha : String
+    + new()
+    + modify()
+    + destroy()
+    + readAll()
+    + readID()
+    + readFilterEstado()
   }
 
   class Notificacion {
-    - Id : Long
-    - Mensaje : String
-    - Fecha : DateTime
-    - TipoNotificacion : TipoNotificacion
-    - IdOrigen : Long?
-    - Leida : Boolean
-    - FechaLeida : DateTime?
-    - Destinatario : Usuario
-    + New()
-    + Destroy()
-    + ReadAll()
-    + ReadId()
-    + ReadFilterEstado()
-    + ReadFilterOrigen()
+    - id : Long
+    - mensaje : String
+    - fecha : Date
+    - tipoNotificacion : tipoNotificacion
+    - idOrigen : Long
+    + new()
+    + destroy()
+    + readAll()
+    + readID()
+    + readFilterEstado()
+    + readFilterOrigen()
   }
 
   class Metrica {
-    - Id : Long
-    - ValoracionMedia : Double
-    - NumeroResenas : Integer
-    - AparicionesEnListas : Integer
-    - Popularidad : Double
-    - Fecha : DateTime
-    - Pelicula : Pelicula
-    + ReadAll()
-    + ReadId()
-    + New()
-    + Modify()
-    + Destroy()
+    - id : Long
+    - estadisticas : String
+    - fecha : Date
+    + readAll()
+    + readID()
+    + new()
+    + modify()
+    + destroy()
   }
 
   ' ========================================
   ' RELACIONES
   ' ========================================
 
-  Usuario "1..1" -- "0..*" Resena : crea >
+  Usuario "1..1" -- "0..*" Resenya : crea >
   Usuario "1..*" -- "0..*" Lista : lista >
   Usuario "1..1" -- "0..*" Reporte : envia >
   Usuario "1..1" -- "0..*" Notificacion : notificacion >
@@ -198,7 +184,7 @@ package "FLICKS" {
   Administrador "1..1" -- "0..*" Pelicula : publica >
   Administrador "1..1" -- "0..*" Reporte : resuelve >
   Lista "0..*" -- "1..*" Pelicula : pelicula >
-  Reporte "0..1" -- "1..*" Resena : resena >
-  Pelicula "1..1" -- "0..*" Resena : resenas >
+  Reporte "0..1" -- "1..*" Resenya : resenya >
+  Pelicula "1..1" -- "0..*" Resenya : resenyas >
 }
 @enduml

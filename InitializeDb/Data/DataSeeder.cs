@@ -9,18 +9,18 @@ namespace InitializeDb.Data
         private readonly UsuarioCEN _usuarioCEN;
         private readonly PeliculaCEN _peliculaCEN;
         private readonly ListaCEN _listaCEN;
-        private readonly ResenaCEN _resenaCEN;
+        private readonly ResenyaCEN _resenyaCEN;
 
         public DataSeeder(
             UsuarioCEN usuarioCEN,
             PeliculaCEN peliculaCEN,
             ListaCEN listaCEN,
-            ResenaCEN resenaCEN)
+            ResenyaCEN resenyaCEN)
         {
             _usuarioCEN = usuarioCEN;
             _peliculaCEN = peliculaCEN;
             _listaCEN = listaCEN;
-            _resenaCEN = resenaCEN;
+            _resenyaCEN = resenyaCEN;
         }
 
         public void SeedData()
@@ -82,8 +82,8 @@ namespace InitializeDb.Data
             var listaId2 = _listaCEN.Crear("Pendientes", tipoLista.Pendiente);
 
             // Crear algunas reseñas de ejemplo
-            var resenaId1 = _resenaCEN.Crear(5, "Una obra maestra del cine clásico.", DateTime.Now.AddDays(-5));
-            var resenaId2 = _resenaCEN.Crear(4, "Narrativa innovadora y actuaciones brillantes.", DateTime.Now.AddDays(-2));
+            var resenyaId1 = _resenyaCEN.Crear(5, "Una obra maestra del cine clásico.", DateTime.Now.AddDays(-5));
+            var resenyaId2 = _resenyaCEN.Crear(4, "Narrativa innovadora y actuaciones brillantes.", DateTime.Now.AddDays(-2));
         }
     }
 }

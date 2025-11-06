@@ -22,3 +22,15 @@ c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\Applicati
 c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\bin\Debug\net8.0\ApplicationCore.dll
 c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\bin\Debug\net8.0\ApplicationCore.pdb
 c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\ApplicationCore\obj\Debug\net8.0\ref\ApplicationCore.dll
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\bin\Debug\net8.0\ApplicationCore.deps.json
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\bin\Debug\net8.0\ApplicationCore.dll
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\bin\Debug\net8.0\ApplicationCore.pdb
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.AssemblyInfoInputs.cache
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.AssemblyInfo.cs
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.csproj.CoreCompileInputs.cache
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.sourcelink.json
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.dll
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\obj\Debug\net8.0\refint\ApplicationCore.dll
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\obj\Debug\net8.0\ApplicationCore.pdb
+C:\Users\Usuario\Documents\dsm\llm\dsm_llm\ApplicationCore\obj\Debug\net8.0\ref\ApplicationCore.dll

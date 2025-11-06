@@ -15,6 +15,6 @@ namespace ApplicationCore.Domain.EN
     public virtual string Sinopsis { get; set; } = null!;
         public virtual decimal? ValoracionMedia { get; set; }
 
-        public virtual IList<Resena> Reseñas { get; set; } = new List<Resena>();
+        public virtual IList<Resenya> Resenyas { get; set; } = new List<Resenya>();
     }
 }

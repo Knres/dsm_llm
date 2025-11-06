@@ -13,8 +13,8 @@ namespace ApplicationCore.Domain.EN
         public virtual string? Biografia { get; set; }
         public virtual bool ModoBlancoYNegro { get; set; }
 
-        // Navegaciones
-        public virtual IList<Resena> Reseñas { get; set; } = new List<Resena>();
+    // Navegaciones
+    public virtual IList<Resenya> Resenyas { get; set; } = new List<Resenya>();
         public virtual IList<Lista> Listas { get; set; } = new List<Lista>();
         public virtual IList<Notificacion> Notificaciones { get; set; } = new List<Notificacion>();
         public virtual IList<Reporte> Reportes { get; set; } = new List<Reporte>();

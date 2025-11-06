@@ -11,23 +11,23 @@ namespace ApplicationCore.Domain.CP
     {
         private readonly MetricaCEN _metricaCEN;
         private readonly PeliculaCEN _peliculaCEN;
-        private readonly ResenaCEN _resenaCEN;
+    private readonly ResenyaCEN _resenaCEN;
         private readonly ListaCEN _listaCEN;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMetricaRepository _metricaRepository;
         private readonly IPeliculaRepository _peliculaRepository;
-        private readonly IResenaRepository _resenaRepository;
+    private readonly ApplicationCore.Domain.Repositories.IResenyaRepository _resena_repository;
         private readonly IListaRepository _listaRepository;
 
         public ManageMetricasCP(
             MetricaCEN metricaCEN,
             PeliculaCEN peliculaCEN,
-            ResenaCEN resenaCEN,
+            ResenyaCEN resenaCEN,
             ListaCEN listaCEN,
             IUnitOfWork unitOfWork,
             IMetricaRepository metricaRepository,
             IPeliculaRepository peliculaRepository,
-            IResenaRepository resenaRepository,
+            ApplicationCore.Domain.Repositories.IResenyaRepository resenaRepository,
             IListaRepository listaRepository)
         {
             _metricaCEN = metricaCEN;
@@ -37,7 +37,7 @@ namespace ApplicationCore.Domain.CP
             _unitOfWork = unitOfWork;
             _metricaRepository = metricaRepository;
             _peliculaRepository = peliculaRepository;
-            _resenaRepository = resenaRepository;
+            _resena_repository = resenaRepository;
             _listaRepository = listaRepository;
         }
 
@@ -51,7 +51,7 @@ namespace ApplicationCore.Domain.CP
                 if (pelicula == null)
                     throw new Exception($"Película {peliculaId} no encontrada");
 
-                var resenas = _resenaRepository.ReadAll().Where(r => r.Pelicula.Id == peliculaId).ToList();
+                var resenyas = _resena_repository.ReadAll().Where(r => r.Pelicula.Id == peliculaId).ToList();
                 var listas = _listaRepository.ReadAll().Where(l => l.Peliculas.Any(p => p.Id == peliculaId)).ToList();
 
                 // Calcular métricas
@@ -59,13 +59,13 @@ namespace ApplicationCore.Domain.CP
                              ?? new Metrica { Pelicula = pelicula };
 
                 // Actualizar valoración media
-                if (resenas.Any())
+                if (resenyas.Any())
                 {
-                    metrica.ValoracionMedia = (double)resenas.Average(r => r.Valoracion);
+                    metrica.ValoracionMedia = (double)resenyas.Average(r => r.Punctuation);
                 }
 
                 // Actualizar número de reseñas
-                metrica.NumeroResenas = resenas.Count;
+                metrica.NumeroResenas = resenyas.Count;
 
                 // Actualizar número de apariciones en listas
                 metrica.AparicionesEnListas = listas.Count;

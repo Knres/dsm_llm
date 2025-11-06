@@ -1,8 +1,8 @@
 {
   "metadata": {
     "name": "FLICKS",
-    "source": "Dclases3.puml",
-    "generated": "2025-10-30"
+    "source": "new.puml",
+    "generated": "2025-11-06"
   },
   "entities": [
     {
@@ -45,10 +45,10 @@
       "methods": ["new","modify","destroy","readAll","readID","readFilter"]
     },
     {
-      "name": "Resena",
+      "name": "Resenya",
       "properties": [
         { "name": "Id", "type": "long", "nullable": false },
-        { "name": "Puntuacion", "type": "long", "nullable": false },
+        { "name": "Valoracion", "type": "decimal", "nullable": false },
         { "name": "Comentario", "type": "string", "nullable": true },
         { "name": "FechaPublicacion", "type": "DateTime", "nullable": false }
       ],
@@ -88,7 +88,10 @@
       "name": "Metrica",
       "properties": [
         { "name": "Id", "type": "long", "nullable": false },
-        { "name": "Estadisticas", "type": "string", "nullable": true },
+        { "name": "ValoracionMedia", "type": "double", "nullable": false },
+        { "name": "NumeroResenas", "type": "int", "nullable": false },
+        { "name": "AparicionesEnListas", "type": "int", "nullable": false },
+        { "name": "Popularidad", "type": "double", "nullable": false },
         { "name": "Fecha", "type": "DateTime", "nullable": false }
       ],
       "methods": ["readAll","readID"]
@@ -100,15 +103,15 @@
     { "name": "estadoReporte", "values": ["Pendiente","Resuelto","Rechazado"] }
   ],
   "relations": [
-    { "from": "Usuario", "to": "Resena", "multiplicity": "1..*", "label": "escribe" },
+    { "from": "Usuario", "to": "Resenya", "multiplicity": "1..*", "label": "escribe" },
     { "from": "Usuario", "to": "Lista", "multiplicity": "1..*", "label": "crea" },
     { "from": "Usuario", "to": "Notificacion", "multiplicity": "1..*", "label": "recibe" },
     { "from": "Usuario", "to": "Reporte", "multiplicity": "1..*", "label": "realiza" },
     { "from": "Administrador", "to": "Reporte", "multiplicity": "1..*", "label": "resuelve" },
     { "from": "Administrador", "to": "Pelicula", "multiplicity": "1..*", "label": "publica" },
-    { "from": "Pelicula", "to": "Resena", "multiplicity": "1..*", "label": "tiene" },
+    { "from": "Pelicula", "to": "Resenya", "multiplicity": "1..*", "label": "tiene" },
     { "from": "Lista", "to": "Pelicula", "multiplicity": "0..*..*", "label": "contiene" },
-    { "from": "Reporte", "to": "Resena", "multiplicity": "0..1..1", "label": "sobre" },
+    { "from": "Reporte", "to": "Resenya", "multiplicity": "0..1..1", "label": "sobre" },
     { "from": "Metrica", "to": "Usuario", "multiplicity": "1..1", "label": "consulta" }
   ]
 }

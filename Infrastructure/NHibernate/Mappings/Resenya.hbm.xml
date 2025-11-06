@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
-  <class name="ApplicationCore.Domain.EN.Resena, ApplicationCore" table="Resena">
+  <class name="ApplicationCore.Domain.EN.Resenya, ApplicationCore" table="Resenya">
     <id name="Id" column="Id" type="long">
       <generator class="hilo">
         <param name="table">NHibernateUniqueKey</param>
@@ -8,9 +8,9 @@
         <param name="max_lo">100</param>
       </generator>
     </id>
-    <property name="Puntuacion" />
-    <property name="Comentario" />
-    <property name="FechaPublicacion" />
+    <property name="Punctuation" type="long" />
+    <property name="Comentario" type="string" />
+    <property name="Fecha" type="DateTime" />
 
     <many-to-one name="Autor" class="ApplicationCore.Domain.EN.Usuario, ApplicationCore" column="AutorId" />
     <many-to-one name="Pelicula" class="ApplicationCore.Domain.EN.Pelicula, ApplicationCore" column="PeliculaId" />

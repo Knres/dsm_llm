@@ -13,6 +13,6 @@
     <property name="Fecha" />
 
     <many-to-one name="Autor" class="ApplicationCore.Domain.EN.Usuario, ApplicationCore" column="AutorId" />
-    <many-to-one name="SobreResena" class="ApplicationCore.Domain.EN.Resena, ApplicationCore" column="ResenaId" />
+    <many-to-one name="SobreResena" class="ApplicationCore.Domain.EN.Resenya, ApplicationCore" column="ResenaId" />
   </class>
 </hibernate-mapping>

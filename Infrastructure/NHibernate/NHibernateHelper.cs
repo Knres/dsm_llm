@@ -14,6 +14,8 @@ namespace Infrastructure.NHibernate
 
             var cfg = new Configuration();
             // Configurar directamente desde el fichero. El NHibernate.cfg.xml contiene rutas relativas correctas
+            // Configurar usando el directorio base para resolver rutas relativas
+            System.Environment.CurrentDirectory = basePath;
             cfg.Configure(cfgPath);
             return cfg;
         }

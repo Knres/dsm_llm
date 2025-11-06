@@ -15,9 +15,9 @@
     <property name="Biografia" />
     <property name="ModoBlancoYNegro" />
 
-    <bag name="Reseñas" inverse="true" cascade="all-delete-orphan" lazy="true">
+    <bag name="Resenyas" inverse="true" cascade="all-delete-orphan" lazy="true">
       <key column="AutorId" />
-      <one-to-many class="ApplicationCore.Domain.EN.Resena, ApplicationCore" />
+      <one-to-many class="ApplicationCore.Domain.EN.Resenya, ApplicationCore" />
     </bag>
 
     <bag name="Listas" inverse="true" cascade="all-delete-orphan" lazy="true">

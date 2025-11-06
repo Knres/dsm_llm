@@ -114,8 +114,8 @@ namespace InitializeDb
 
             // Registro de Repositorios
             services.AddScoped<IUsuarioRepository, UsuarioRepository>();
-            services.AddScoped<IPeliculaRepository, PeliculaRepository>();
-            services.AddScoped<IResenaRepository, ResenaRepository>();
+			services.AddScoped<IPeliculaRepository, PeliculaRepository>();
+			services.AddScoped<IResenyaRepository, ResenyaRepository>();
             services.AddScoped<IListaRepository, ListaRepository>();
             services.AddScoped<IReporteRepository, ReporteRepository>();
             services.AddScoped<INotificacionRepository, NotificacionRepository>();
@@ -124,7 +124,7 @@ namespace InitializeDb
             // Registro de CENs
             services.AddScoped<UsuarioCEN>();
             services.AddScoped<PeliculaCEN>();
-            services.AddScoped<ResenaCEN>();
+			services.AddScoped<ResenyaCEN>();
             services.AddScoped<ListaCEN>();
             services.AddScoped<ReporteCEN>();
             services.AddScoped<NotificacionCEN>();

@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Tests\\Tests.csproj": {}
+    "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Tests\\Tests.csproj": {}
   },
   "projects": {
-    "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
+    "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "projectUniqueName": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
         "projectName": "ApplicationCore",
-        "projectPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
-        "packagesPath": "C:\\Users\\kinru\\.nuget\\packages\\",
-        "outputPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\obj\\",
+        "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kinru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -69,20 +69,20 @@
         }
       }
     },
-    "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Tests\\Tests.csproj": {
+    "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Tests\\Tests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Tests\\Tests.csproj",
+        "projectUniqueName": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Tests\\Tests.csproj",
         "projectName": "Tests",
-        "projectPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Tests\\Tests.csproj",
-        "packagesPath": "C:\\Users\\kinru\\.nuget\\packages\\",
-        "outputPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\Tests\\obj\\",
+        "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Tests\\Tests.csproj",
+        "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
+        "outputPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Tests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\kinru\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Usuario\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -97,8 +97,8 @@
           "net9.0": {
             "targetAlias": "net9.0",
             "projectReferences": {
-              "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
-                "projectPath": "C:\\OneDrive\\Escritorio\\UA\\DSM (Diseño de Sistemas Multimedia)\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj"
+              "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
+                "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj"
               }
             }
           }

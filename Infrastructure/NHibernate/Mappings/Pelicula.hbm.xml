@@ -18,9 +18,9 @@
     <property name="Sinopsis" />
     <property name="ValoracionMedia" />
 
-    <bag name="Reseñas" inverse="true" cascade="all-delete-orphan" lazy="true">
+    <bag name="Resenyas" inverse="true" cascade="all-delete-orphan" lazy="true">
       <key column="PeliculaId" />
-      <one-to-many class="ApplicationCore.Domain.EN.Resena, ApplicationCore" />
+      <one-to-many class="ApplicationCore.Domain.EN.Resenya, ApplicationCore" />
     </bag>
   </class>
 </hibernate-mapping>

@@ -13,7 +13,7 @@
   <mapping file="Infrastructure/NHibernate/Mappings/Usuario.hbm.xml" />
   <mapping file="Infrastructure/NHibernate/Mappings/Administrador.hbm.xml" />
   <mapping file="Infrastructure/NHibernate/Mappings/Pelicula.hbm.xml" />
-  <mapping file="Infrastructure/NHibernate/Mappings/Resena.hbm.xml" />
+  <mapping file="Infrastructure/NHibernate/Mappings/Resenya.hbm.xml" />
   <mapping file="Infrastructure/NHibernate/Mappings/Lista.hbm.xml" />
   <mapping file="Infrastructure/NHibernate/Mappings/Reporte.hbm.xml" />
   <mapping file="Infrastructure/NHibernate/Mappings/Notificacion.hbm.xml" />

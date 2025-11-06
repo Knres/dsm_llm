@@ -7,25 +7,25 @@ using ApplicationCore.Domain.Enums;
 
 namespace ApplicationCore.Domain.CP
 {
-    public class ManageResenasCP
+    public class ManageResenyasCP
     {
-        private readonly ResenaCEN _resenaCEN;
+        private readonly ResenyaCEN _resenaCEN;
         private readonly PeliculaCEN _peliculaCEN;
         private readonly UsuarioCEN _usuarioCEN;
         private readonly NotificacionCEN _notificacionCEN;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IResenaRepository _resenaRepository;
+        private readonly ApplicationCore.Domain.Repositories.IResenyaRepository _resenaRepository;
         private readonly IPeliculaRepository _peliculaRepository;
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly INotificacionRepository _notificacionRepository;
 
-        public ManageResenasCP(
-            ResenaCEN resenaCEN,
+        public ManageResenyasCP(
+            ResenyaCEN resenaCEN,
             PeliculaCEN peliculaCEN,
             UsuarioCEN usuarioCEN,
             NotificacionCEN notificacionCEN,
             IUnitOfWork unitOfWork,
-            IResenaRepository resenaRepository,
+            ApplicationCore.Domain.Repositories.IResenyaRepository resenaRepository,
             IPeliculaRepository peliculaRepository,
             IUsuarioRepository usuarioRepository,
             INotificacionRepository notificacionRepository)
@@ -41,7 +41,7 @@ namespace ApplicationCore.Domain.CP
             _notificacionRepository = notificacionRepository;
         }
 
-        public virtual long CrearResenaYNotificar(long peliculaId, long autorId, decimal valoracion, string comentario)
+        public virtual long CrearResenyaYNotificar(long peliculaId, long autorId, long punctuation, string comentario)
         {
             try
             {
@@ -57,26 +57,26 @@ namespace ApplicationCore.Domain.CP
                 if (autor == null)
                     throw new Exception($"Usuario {autorId} no encontrado");
 
-                // Crear la reseña
-                var resena = new Resena
+                // Crear la resenya (nuevo nombre)
+                var resenya = new EN.Resenya
                 {
-                    Valoracion = valoracion,
+                    Punctuation = punctuation,
                     Comentario = comentario,
-                    FechaPublicacion = DateTime.Now,
+                    Fecha = DateTime.Now,
                     Autor = autor,
                     Pelicula = pelicula
                 };
 
-                _resenaRepository.New(resena);
+                _resenaRepository.New(resenya);
 
                 // Actualizar la valoración media de la película
-                var todasLasResenas = _resenaRepository.ReadAll()
+                var todasLasResenyas = _resenaRepository.ReadAll()
                     .Where(r => r.Pelicula.Id == peliculaId)
                     .ToList();
 
-                if (todasLasResenas.Any())
+                if (todasLasResenyas.Any())
                 {
-                    decimal nuevaValoracionMedia = todasLasResenas.Average(r => r.Valoracion);
+                    decimal nuevaValoracionMedia = (decimal)todasLasResenyas.Average(r => r.Punctuation);
                     pelicula.ValoracionMedia = nuevaValoracionMedia;
                     _peliculaRepository.Modify(pelicula);
                 }
@@ -87,12 +87,12 @@ namespace ApplicationCore.Domain.CP
                     Mensaje = $"{autor.Nombre} ha publicado una reseña de {pelicula.Titulo}",
                     Fecha = DateTime.Now,
                     Tipo = tipoNotificacion.Otro,
-                    IdOrigen = resena.Id
+                    IdOrigen = resenya.Id
                 };
                 _notificacionRepository.New(notificacion);
 
                 _unitOfWork.Commit();
-                return resena.Id;
+                return resenya.Id;
             }
             catch
             {
@@ -101,32 +101,32 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public virtual void ModificarResena(long resenaId, decimal valoracion, string comentario)
+        public virtual void ModificarResenya(long resenyaId, long punctuation, string comentario)
         {
             try
             {
                 _unitOfWork.BeginTransaction();
 
                 // Verificar que existe la reseña
-                var resena = _resenaRepository.ReadById(resenaId);
-                if (resena == null)
-                    throw new Exception($"Reseña {resenaId} no encontrada");
+                var resenya = _resenaRepository.ReadById(resenyaId);
+                if (resenya == null)
+                    throw new Exception($"Reseña {resenyaId} no encontrada");
 
-                // Actualizar la reseña
-                resena.Valoracion = valoracion;
-                resena.Comentario = comentario;
-                _resenaRepository.Modify(resena);
+                // Actualizar la resenya
+                resenya.Punctuation = punctuation;
+                resenya.Comentario = comentario;
+                _resenaRepository.Modify(resenya);
 
                 // Actualizar la valoración media de la película
-                var todasLasResenas = _resenaRepository.ReadAll()
-                    .Where(r => r.Pelicula.Id == resena.Pelicula.Id)
+                var todasLasResenyas = _resenaRepository.ReadAll()
+                    .Where(r => r.Pelicula.Id == resenya.Pelicula.Id)
                     .ToList();
 
-                if (todasLasResenas.Any())
+                if (todasLasResenyas.Any())
                 {
-                    decimal nuevaValoracionMedia = todasLasResenas.Average(r => r.Valoracion);
-                    resena.Pelicula.ValoracionMedia = nuevaValoracionMedia;
-                    _peliculaRepository.Modify(resena.Pelicula);
+                    decimal nuevaValoracionMedia = (decimal)todasLasResenyas.Average(r => r.Punctuation);
+                    resenya.Pelicula.ValoracionMedia = nuevaValoracionMedia;
+                    _peliculaRepository.Modify(resenya.Pelicula);
                 }
 
                 _unitOfWork.Commit();
@@ -138,31 +138,30 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public virtual void EliminarResena(long resenaId)
+        public virtual void EliminarResenya(long resenyaId)
         {
             try
             {
                 _unitOfWork.BeginTransaction();
+                // Verificar que existe la resenya
+                var resenya = _resenaRepository.ReadById(resenyaId);
+                if (resenya == null)
+                    throw new Exception($"Reseña {resenyaId} no encontrada");
 
-                // Verificar que existe la reseña
-                var resena = _resenaRepository.ReadById(resenaId);
-                if (resena == null)
-                    throw new Exception($"Reseña {resenaId} no encontrada");
-
-                // Eliminar la reseña
-                _resenaRepository.Delete(resena);
+                // Eliminar la resenya
+                _resenaRepository.Delete(resenya);
 
                 // Actualizar la valoración media de la película
-                var peliculaId = resena.Pelicula.Id;
-                var todasLasResenas = _resenaRepository.ReadAll()
+                var peliculaId = resenya.Pelicula.Id;
+                var todasLasResenyas = _resenaRepository.ReadAll()
                     .Where(r => r.Pelicula.Id == peliculaId)
                     .ToList();
 
-                if (todasLasResenas.Any())
+                if (todasLasResenyas.Any())
                 {
-                    decimal nuevaValoracionMedia = todasLasResenas.Average(r => r.Valoracion);
-                    resena.Pelicula.ValoracionMedia = nuevaValoracionMedia;
-                    _peliculaRepository.Modify(resena.Pelicula);
+                    decimal nuevaValoracionMedia = (decimal)todasLasResenyas.Average(r => r.Punctuation);
+                    resenya.Pelicula.ValoracionMedia = nuevaValoracionMedia;
+                    _peliculaRepository.Modify(resenya.Pelicula);
                 }
 
                 _unitOfWork.Commit();

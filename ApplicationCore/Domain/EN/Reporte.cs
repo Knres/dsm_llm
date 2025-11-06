@@ -10,6 +10,6 @@ namespace ApplicationCore.Domain.EN
         public virtual DateTime Fecha { get; set; }
 
     public virtual Usuario Autor { get; set; } = null!;
-    public virtual Resena SobreResena { get; set; } = null!;
+    public virtual Resenya SobreResena { get; set; } = null!;
     }
 }

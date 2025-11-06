@@ -14,12 +14,12 @@ namespace Tests
     {
         private readonly Mock<IMetricaRepository> _metricaRepositoryMock;
         private readonly Mock<IPeliculaRepository> _peliculaRepositoryMock;
-        private readonly Mock<IResenaRepository> _resenaRepositoryMock;
+    private readonly Mock<IResenyaRepository> _resenaRepositoryMock;
         private readonly Mock<IListaRepository> _listaRepositoryMock;
         private readonly Mock<IUnitOfWork> _unitOfWorkMock;
         private readonly Mock<MetricaCEN> _metricaCENMock;
         private readonly Mock<PeliculaCEN> _peliculaCENMock;
-        private readonly Mock<ResenaCEN> _resenaCENMock;
+        private readonly Mock<ResenyaCEN> _resenaCENMock;
         private readonly Mock<ListaCEN> _listaCENMock;
         private readonly ManageMetricasCP _manageMetricasCP;
 
@@ -27,12 +27,12 @@ namespace Tests
         {
             _metricaRepositoryMock = new Mock<IMetricaRepository>();
             _peliculaRepositoryMock = new Mock<IPeliculaRepository>();
-            _resenaRepositoryMock = new Mock<IResenaRepository>();
+            _resenaRepositoryMock = new Mock<IResenyaRepository>();
             _listaRepositoryMock = new Mock<IListaRepository>();
             _unitOfWorkMock = new Mock<IUnitOfWork>();
             _metricaCENMock = new Mock<MetricaCEN>(_metricaRepositoryMock.Object, _unitOfWorkMock.Object);
             _peliculaCENMock = new Mock<PeliculaCEN>(_peliculaRepositoryMock.Object, _unitOfWorkMock.Object);
-            _resenaCENMock = new Mock<ResenaCEN>(_resenaRepositoryMock.Object, _unitOfWorkMock.Object);
+            _resenaCENMock = new Mock<ResenyaCEN>(_resenaRepositoryMock.Object, _unitOfWorkMock.Object);
             _listaCENMock = new Mock<ListaCEN>(_listaRepositoryMock.Object, _unitOfWorkMock.Object);
 
             _manageMetricasCP = new ManageMetricasCP(
@@ -54,10 +54,10 @@ namespace Tests
             // Arrange
             var peliculaId = 1L;
             var pelicula = new Pelicula { Id = peliculaId, Titulo = "Test Movie" };
-            var resenas = new List<Resena>
+            var resenas = new List<Resenya>
             {
-                new Resena { Id = 1, Pelicula = pelicula, Valoracion = 8 },
-                new Resena { Id = 2, Pelicula = pelicula, Valoracion = 6 }
+                new Resenya { Id = 1, Pelicula = pelicula, Punctuation = 8 },
+                new Resenya { Id = 2, Pelicula = pelicula, Punctuation = 6 }
             };
             var listas = new List<Lista>
             {

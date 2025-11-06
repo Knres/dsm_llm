@@ -9,19 +9,19 @@ namespace ApplicationCore.Domain.CP
     public class ManagePeliculasCP
     {
         private readonly PeliculaCEN _peliculaCEN;
-        private readonly ResenaCEN _resenaCEN;
+    private readonly ResenyaCEN _resenaCEN;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IPeliculaRepository _peliculaRepository;
-        private readonly IResenaRepository _resenaRepository;
+    private readonly ApplicationCore.Domain.Repositories.IResenyaRepository _resena_repository;
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly INotificacionRepository _notificacionRepository;
 
         public ManagePeliculasCP(
             PeliculaCEN peliculaCEN,
-            ResenaCEN resenaCEN,
+            ResenyaCEN resenaCEN,
             IUnitOfWork unitOfWork,
             IPeliculaRepository peliculaRepository,
-            IResenaRepository resenaRepository,
+            ApplicationCore.Domain.Repositories.IResenyaRepository resenaRepository,
             IUsuarioRepository usuarioRepository,
             INotificacionRepository notificacionRepository)
         {
@@ -29,7 +29,7 @@ namespace ApplicationCore.Domain.CP
             _resenaCEN = resenaCEN;
             _unitOfWork = unitOfWork;
             _peliculaRepository = peliculaRepository;
-            _resenaRepository = resenaRepository;
+            _resena_repository = resenaRepository;
             _usuarioRepository = usuarioRepository;
             _notificacionRepository = notificacionRepository;
         }
@@ -81,7 +81,7 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
-        public virtual void AgregarResenaYActualizarValoracion(long peliculaId, long usuarioId, decimal valoracion, string comentario)
+        public virtual void AgregarResenyaYActualizarValoracion(long peliculaId, long usuarioId, long punctuation, string comentario)
         {
             try
             {
@@ -98,20 +98,20 @@ namespace ApplicationCore.Domain.CP
                     throw new Exception($"Usuario {usuarioId} no encontrado");
 
                 // Crear la reseña
-                var resenaId = _resenaCEN.Crear(
-                    valoracion,
+                var resenyaId = _resenaCEN.Crear(
+                    punctuation,
                     comentario,
                     DateTime.Now
                 );
 
                 // Actualizar la valoración media de la película
-                var todasLasResenas = _resenaRepository.ReadAll()
-                    .Where(r => r.Id == peliculaId)
+                var todasLasResenyas = _resena_repository.ReadAll()
+                    .Where(r => r.Pelicula.Id == peliculaId)
                     .ToList();
 
-                if (todasLasResenas.Any())
+                if (todasLasResenyas.Any())
                 {
-                    decimal nuevaValoracionMedia = todasLasResenas.Average(r => r.Valoracion);
+                    decimal nuevaValoracionMedia = (decimal)todasLasResenyas.Average(r => r.Punctuation);
                     pelicula.ValoracionMedia = nuevaValoracionMedia;
                     _peliculaRepository.Modify(pelicula);
                 }
@@ -122,7 +122,7 @@ namespace ApplicationCore.Domain.CP
                     Mensaje = $"Has publicado una reseña para {pelicula.Titulo}",
                     Fecha = DateTime.Now,
                     Tipo = Enums.tipoNotificacion.Otro,
-                    IdOrigen = resenaId
+                    IdOrigen = resenyaId
                 };
                 _notificacionRepository.New(notificacion);
 

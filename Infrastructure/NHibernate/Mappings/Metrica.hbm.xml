@@ -8,8 +8,11 @@
         <param name="max_lo">100</param>
       </generator>
     </id>
-    <property name="Estadisticas" />
-    <property name="Fecha" />
+    <property name="ValoracionMedia" type="double" not-null="true" />
+    <property name="NumeroResenas" type="int" not-null="true" />
+    <property name="AparicionesEnListas" type="int" not-null="true" />
+    <property name="Popularidad" type="double" not-null="true" />
+    <property name="Fecha" type="DateTime" not-null="true" />
 
     <many-to-one name="Usuario" class="ApplicationCore.Domain.EN.Usuario, ApplicationCore" column="UsuarioId" />
   </class>

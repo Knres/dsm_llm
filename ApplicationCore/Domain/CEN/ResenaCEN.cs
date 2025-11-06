@@ -4,6 +4,7 @@ using ApplicationCore.Domain.Repositories;
 
 namespace ApplicationCore.Domain.CEN
 {
+    [System.Obsolete("Esta clase está obsoleta. Use ResenyaCEN en su lugar.", true)]
     public class ResenaCEN
     {
         protected readonly IResenaRepository _resenaRepository;
@@ -60,6 +61,69 @@ namespace ApplicationCore.Domain.CEN
             public virtual IList<Resena> ObtenerTodas()
         {
             return _resenaRepository.ReadAll();
+        }
+    }
+}
+
+// New CEN aligned with new.puml naming: Resenya
+namespace ApplicationCore.Domain.CEN
+{
+    public class ResenyaCEN
+    {
+        protected readonly ApplicationCore.Domain.Repositories.IResenyaRepository _resenyaRepository;
+        protected readonly IUnitOfWork _unitOfWork;
+
+        public ResenyaCEN(ApplicationCore.Domain.Repositories.IResenyaRepository resenyaRepository, IUnitOfWork unitOfWork)
+        {
+            _resenyaRepository = resenyaRepository;
+            _unitOfWork = unitOfWork;
+        }
+
+        public virtual long Crear(long punctuation, string? comentario, DateTime fecha)
+        {
+            var resenya = new EN.Resenya
+            {
+                Punctuation = punctuation,
+                Comentario = comentario,
+                Fecha = fecha
+            };
+
+            _resenyaRepository.New(resenya);
+            _unitOfWork.SaveChanges();
+            return resenya.Id;
+        }
+
+        public virtual void Modificar(long id, long punctuation, string? comentario)
+        {
+            var resenya = _resenyaRepository.ReadById(id);
+            if (resenya == null)
+                throw new Exception($"Reseña {id} no encontrada");
+
+            resenya.Punctuation = punctuation;
+            resenya.Comentario = comentario;
+
+            _resenyaRepository.Modify(resenya);
+            _unitOfWork.SaveChanges();
+        }
+
+        public virtual void Eliminar(long id)
+        {
+            var resenya = _resenyaRepository.ReadById(id);
+            if (resenya == null)
+                throw new Exception($"Reseña {id} no encontrada");
+
+            _resenyaRepository.Delete(resenya);
+            _unitOfWork.SaveChanges();
+        }
+
+        public virtual EN.Resenya ObtenerPorId(long id)
+        {
+            return _resenyaRepository.ReadById(id);
+        }
+
+        public virtual IList<EN.Resenya> ObtenerTodas()
+        {
+            return _resenyaRepository.ReadAll();
         }
     }
 }

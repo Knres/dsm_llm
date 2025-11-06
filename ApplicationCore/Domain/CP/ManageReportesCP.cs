@@ -9,23 +9,23 @@ namespace ApplicationCore.Domain.CP
     public class ManageReportesCP
     {
         private readonly ReporteCEN _reporteCEN;
-        private readonly ResenaCEN _resenaCEN;
+    private readonly ResenyaCEN _resenaCEN;
         private readonly UsuarioCEN _usuarioCEN;
         private readonly NotificacionCEN _notificacionCEN;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IReporteRepository _reporteRepository;
-        private readonly IResenaRepository _resenaRepository;
+    private readonly ApplicationCore.Domain.Repositories.IResenyaRepository _resena_repository;
         private readonly IUsuarioRepository _usuarioRepository;
         private readonly INotificacionRepository _notificacionRepository;
 
         public ManageReportesCP(
             ReporteCEN reporteCEN,
-            ResenaCEN resenaCEN,
+            ResenyaCEN resenaCEN,
             UsuarioCEN usuarioCEN,
             NotificacionCEN notificacionCEN,
             IUnitOfWork unitOfWork,
             IReporteRepository reporteRepository,
-            IResenaRepository resenaRepository,
+            ApplicationCore.Domain.Repositories.IResenyaRepository resenaRepository,
             IUsuarioRepository usuarioRepository,
             INotificacionRepository notificacionRepository)
         {
@@ -35,7 +35,7 @@ namespace ApplicationCore.Domain.CP
             _notificacionCEN = notificacionCEN;
             _unitOfWork = unitOfWork;
             _reporteRepository = reporteRepository;
-            _resenaRepository = resenaRepository;
+            _resena_repository = resenaRepository;
             _usuarioRepository = usuarioRepository;
             _notificacionRepository = notificacionRepository;
         }
@@ -47,8 +47,8 @@ namespace ApplicationCore.Domain.CP
                 _unitOfWork.BeginTransaction();
 
                 // Verificar que existe la reseña
-                var resena = _resenaRepository.ReadById(resenaId);
-                if (resena == null)
+                var resenya = _resena_repository.ReadById(resenaId);
+                if (resenya == null)
                     throw new Exception($"Reseña {resenaId} no encontrada");
 
                 // Verificar que existe el autor del reporte
@@ -63,7 +63,7 @@ namespace ApplicationCore.Domain.CP
                     Estado = estadoReporte.Pendiente,
                     Fecha = DateTime.Now,
                     Autor = autor,
-                    SobreResena = resena
+                    SobreResena = resenya
                 };
 
                 _reporteRepository.New(reporte);
@@ -114,10 +114,10 @@ namespace ApplicationCore.Domain.CP
                 };
                 _notificacionRepository.New(notificacion);
 
-                // Si el reporte fue resuelto y se determinó eliminar la reseña
+                // Si el reporte fue resuelto y se determinó eliminar la resenya
                 if (nuevoEstado == estadoReporte.Resuelto && respuesta.Contains("reseña eliminada"))
                 {
-                    _resenaRepository.Delete(reporte.SobreResena);
+                    _resena_repository.Delete(reporte.SobreResena);
                 }
 
                 _unitOfWork.Commit();

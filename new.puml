@@ -48,6 +48,11 @@ package "FLICKS" {
     rechazado : 3
   }
 
+  enum estadoNotificacion {
+    leido : 1
+    noleido : 2
+  }
+
   ' ========================================
   ' CLASES
   ' ========================================
@@ -153,12 +158,14 @@ package "FLICKS" {
     - fecha : Date
     - tipoNotificacion : tipoNotificacion
     - idOrigen : Long
+    - estadoNotificacion : estadoNotificacion
     + new()
     + destroy()
     + readAll()
     + readID()
     + readFilterEstado()
     + readFilterOrigen()
+    + cambiarEstado()
   }
 
   class Metrica {

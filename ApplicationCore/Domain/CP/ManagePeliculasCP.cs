@@ -134,5 +134,27 @@ namespace ApplicationCore.Domain.CP
                 throw;
             }
         }
+
+        public virtual int ContarResenyas(long peliculaId)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction();
+
+                var pelicula = _peliculaRepository.ReadById(peliculaId);
+                if (pelicula == null)
+                    throw new Exception($"Película {peliculaId} no encontrada");
+
+                int cantidad = pelicula.Resenyas != null ? pelicula.Resenyas.Count : 0;
+
+                _unitOfWork.Commit();
+                return cantidad;
+            }
+            catch
+            {
+                _unitOfWork.Rollback();
+                throw;
+            }
+        }
     }
 }

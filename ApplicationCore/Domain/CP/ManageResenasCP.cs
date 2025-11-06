@@ -172,5 +172,38 @@ namespace ApplicationCore.Domain.CP
                 throw;
             }
         }
+
+        public virtual decimal calcularValoracionMedia(long peliculaId)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction();
+
+                var todasLasResenyas = _resenaRepository.ReadAll()
+                    .Where(r => r.Pelicula != null && r.Pelicula.Id == peliculaId)
+                    .ToList();
+
+                decimal nuevaValoracionMedia = 0m;
+                if (todasLasResenyas.Any())
+                {
+                    nuevaValoracionMedia = Math.Round((decimal)todasLasResenyas.Average(r => r.Punctuation), 2);
+                }
+
+                var pelicula = _peliculaRepository.ReadById(peliculaId);
+                if (pelicula == null)
+                    throw new Exception($"Película {peliculaId} no encontrada");
+
+                pelicula.ValoracionMedia = nuevaValoracionMedia;
+                _peliculaRepository.Modify(pelicula);
+
+                _unitOfWork.Commit();
+                return nuevaValoracionMedia;
+            }
+            catch
+            {
+                _unitOfWork.Rollback();
+                throw;
+            }
+        }
     }
 }

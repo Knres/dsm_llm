@@ -64,5 +64,21 @@ namespace ApplicationCore.Domain.CEN
             _notificacionRepository.Modify(notificacion);
             _unitOfWork.SaveChanges();
         }
+
+        public virtual estadoNotificacion cambiarEstadoNotificacion(long notificacionId, estadoNotificacion nuevoEstado)
+        {
+            var notificacion = _notificacionRepository.ReadById(notificacionId);
+            if (notificacion == null)
+                throw new Exception($"Notificación {notificacionId} no encontrada");
+
+            notificacion.EstadoNotificacion = nuevoEstado;
+            notificacion.Leida = nuevoEstado == estadoNotificacion.Leida;
+            notificacion.FechaLeida = notificacion.Leida ? (DateTime?)DateTime.Now : null;
+
+            // Actualiza en repositorio pero NO guarda la transacción aquí
+            _notificacionRepository.Modify(notificacion);
+
+            return notificacion.EstadoNotificacion;
+        }
     }
 }

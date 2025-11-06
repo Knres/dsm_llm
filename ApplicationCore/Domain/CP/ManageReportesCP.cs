@@ -128,5 +128,39 @@ namespace ApplicationCore.Domain.CP
                 throw;
             }
         }
+
+        public virtual void ResolverReporteYenviarMensaje(long reporteId, string mensaje)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction();
+
+                var reporte = _reporteRepository.ReadById(reporteId);
+                if (reporte == null)
+                    throw new Exception($"Reporte {reporteId} no encontrado");
+
+                // Marcar como resuelto
+                reporte.Estado = estadoReporte.Resuelto;
+                _reporteRepository.Modify(reporte);
+
+                // Enviar notificación al autor del reporte
+                var notificacion = new Notificacion
+                {
+                    Mensaje = mensaje,
+                    Fecha = DateTime.Now,
+                    Tipo = tipoNotificacion.Reporte,
+                    IdOrigen = reporteId,
+                    Destinatario = reporte.Autor
+                };
+                _notificacionRepository.New(notificacion);
+
+                _unitOfWork.Commit();
+            }
+            catch
+            {
+                _unitOfWork.Rollback();
+                throw;
+            }
+        }
     }
 }

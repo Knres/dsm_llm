@@ -38,5 +38,19 @@ namespace ApplicationCore.Domain.CEN
 
         public virtual IList<Usuario> LeerTodos() => _repo.ReadAll();
         public virtual Usuario LeerPorId(long id) => _repo.ReadById(id);
+
+        public virtual bool modoBlancoYnegro(long userId)
+        {
+            var usuario = _repo.ReadById(userId);
+            if (usuario == null)
+                throw new System.Exception($"Usuario con ID {userId} no encontrado");
+
+            usuario.ModoBlancoYNegro = !usuario.ModoBlancoYNegro;
+
+            // Actualizamos el repositorio objeto (opcional) pero NO realizamos SaveChanges aquí
+            _repo.Modify(usuario);
+
+            return usuario.ModoBlancoYNegro;
+        }
     }
 }

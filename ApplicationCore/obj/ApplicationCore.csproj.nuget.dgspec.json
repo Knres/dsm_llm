@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {}
+    "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
+    "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "projectUniqueName": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
         "projectName": "ApplicationCore",
-        "projectPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\obj\\",
+        "outputPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"

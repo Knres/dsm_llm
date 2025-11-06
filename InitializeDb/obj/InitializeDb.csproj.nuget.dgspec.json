@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj": {}
+    "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
+    "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "projectUniqueName": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
         "projectName": "ApplicationCore",
-        "projectPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
+        "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\obj\\",
+        "outputPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -69,14 +69,14 @@
         }
       }
     },
-    "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj": {
+    "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\obj\\",
+        "outputPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -97,8 +97,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj"
+              "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
+                "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj"
               }
             }
           }
@@ -148,14 +148,14 @@
         }
       }
     },
-    "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj": {
+    "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
+        "projectUniqueName": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
         "projectName": "InitializeDb",
-        "projectPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
+        "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
         "packagesPath": "C:\\Users\\Usuario\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\obj\\",
+        "outputPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -176,11 +176,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
-                "projectPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj"
+              "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj": {
+                "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\ApplicationCore\\ApplicationCore.csproj"
               },
-              "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj"
+              "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }

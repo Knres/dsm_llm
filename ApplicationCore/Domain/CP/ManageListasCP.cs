@@ -99,6 +99,42 @@ namespace ApplicationCore.Domain.CP
             }
         }
 
+        public virtual void AnyadirPelicula(long listaId, params long[] peliculaIds)
+        {
+            try
+            {
+                _unitOfWork.BeginTransaction();
+
+                // Verificar que existe la lista
+                var lista = _listaRepository.ReadById(listaId);
+                if (lista == null)
+                    throw new Exception($"Lista {listaId} no encontrada");
+
+                foreach (var peliculaId in peliculaIds)
+                {
+                    // Verificar que existe la película
+                    var pelicula = _peliculaRepository.ReadById(peliculaId);
+                    if (pelicula == null)
+                        throw new Exception($"Película {peliculaId} no encontrada");
+
+                    // Evitar duplicados
+                    if (!lista.Peliculas.Any(p => p.Id == peliculaId))
+                    {
+                        lista.Peliculas.Add(pelicula);
+                    }
+                }
+
+                _listaRepository.Modify(lista);
+
+                _unitOfWork.Commit();
+            }
+            catch
+            {
+                _unitOfWork.Rollback();
+                throw;
+            }
+        }
+
         public virtual void QuitarPeliculaDeLista(long listaId, long peliculaId)
         {
             try

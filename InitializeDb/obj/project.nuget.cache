@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "c90d+602N5k=",
+  "dgSpecHash": "k+yGFMNS3Ho=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
+  "projectFilePath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Usuario\\.nuget\\packages\\antlr3.runtime\\3.5.1\\antlr3.runtime.3.5.1.nupkg.sha512",
     "C:\\Users\\Usuario\\.nuget\\packages\\iesi.collections\\4.0.4\\iesi.collections.4.0.4.nupkg.sha512",
@@ -107,9 +107,9 @@
       "code": "NU1903",
       "level": "Warning",
       "message": "El paquete \"NHibernate\" 5.4.7 tiene una vulnerabilidad de gravedad alta conocida, https://github.com/advisories/GHSA-fg4q-ccq8-3r5q",
-      "projectPath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
+      "projectPath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
       "warningLevel": 1,
-      "filePath": "C:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
+      "filePath": "c:\\Users\\Usuario\\Documents\\dsm\\llm\\dsm_llm\\InitializeDb\\InitializeDb.csproj",
       "libraryId": "NHibernate",
       "targetGraphs": [
         "net8.0"

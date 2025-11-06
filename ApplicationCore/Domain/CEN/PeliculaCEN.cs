@@ -16,10 +16,24 @@ namespace ApplicationCore.Domain.CEN
             _unitOfWork = unitOfWork;
         }
 
-        public virtual void Crear(Pelicula p)
+        public virtual long Crear(string titulo, string tituloOriginal, long anio, long duracion, string pais, string director, string genero, string sinopsis, decimal valoracionMedia)
         {
-            _repo.New(p);
+            var pelicula = new Pelicula
+            {
+                Titulo = titulo,
+                TituloOriginal = tituloOriginal,
+                Anio = anio,
+                Duracion = duracion,
+                Pais = pais,
+                Director = director,
+                Genero = genero,
+                Sinopsis = sinopsis,
+                ValoracionMedia = valoracionMedia
+            };
+
+            _repo.New(pelicula);
             _unitOfWork.SaveChanges();
+            return pelicula.Id;
         }
 
         public virtual void Modificar(Pelicula p)

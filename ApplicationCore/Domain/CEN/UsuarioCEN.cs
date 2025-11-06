@@ -15,11 +15,21 @@ namespace ApplicationCore.Domain.CEN
             _unitOfWork = unitOfWork;
         }
 
-        public virtual void Crear(Usuario u)
+        public virtual long Crear(string nombre, string email, string contrasena, string? fotoPerfil, string? biografia, bool modoBlancoYNegro)
         {
-            // Validaciones de negocio ligeras pueden ir aquí
-            _repo.New(u);
+            var usuario = new Usuario
+            {
+                Nombre = nombre,
+                Email = email,
+                Contrasena = contrasena,
+                FotoPerfil = fotoPerfil,
+                Biografia = biografia,
+                ModoBlancoYNegro = modoBlancoYNegro
+            };
+
+            _repo.New(usuario);
             _unitOfWork.SaveChanges();
+            return usuario.Id;
         }
 
         public virtual void Modificar(Usuario u)

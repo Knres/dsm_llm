@@ -30,19 +30,19 @@ c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\Infrastru
 c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\Infrastructure\bin\Debug\net8.0\ApplicationCore.pdb
 c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
 c:\OneDrive\Escritorio\UA\DSM (Diseño de Sistemas Multimedia)\dsm_llm\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\ApplicationCore.dll
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\ApplicationCore.pdb
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
-C:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\Infrastructure.deps.json
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\Infrastructure.dll
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\Infrastructure.pdb
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\ApplicationCore.dll
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\bin\Debug\net8.0\ApplicationCore.pdb
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.AssemblyReference.cache
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfoInputs.cache
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.AssemblyInfo.cs
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.csproj.CoreCompileInputs.cache
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.sourcelink.json
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastr.15EFFBFE.Up2Date
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.dll
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\refint\Infrastructure.dll
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\Infrastructure.pdb
+c:\Users\Usuario\Documents\dsm\llm\dsm_llm\Infrastructure\obj\Debug\net8.0\ref\Infrastructure.dll

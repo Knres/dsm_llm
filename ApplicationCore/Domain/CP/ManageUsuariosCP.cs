@@ -17,10 +17,9 @@ namespace ApplicationCore.Domain.CP
             _uow = uow;
         }
 
-        public virtual void CrearUsuario(Usuario u)
+        public virtual long CrearUsuario(string nombre, string email, string contrasena, string? fotoPerfil, string? biografia, bool modoBlancoYNegro)
         {
-            _usuarioCEN.Crear(u);
-            _uow.SaveChanges();
+            return _usuarioCEN.Crear(nombre, email, contrasena, fotoPerfil, biografia, modoBlancoYNegro);
         }
 
         public virtual IEnumerable<Usuario> ListarUsuarios() => _usuarioCEN.LeerTodos();

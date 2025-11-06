@@ -14,6 +14,6 @@
     <property name="Popularidad" type="double" not-null="true" />
     <property name="Fecha" type="DateTime" not-null="true" />
 
-    <many-to-one name="Usuario" class="ApplicationCore.Domain.EN.Usuario, ApplicationCore" column="UsuarioId" />
+    <many-to-one name="Pelicula" class="ApplicationCore.Domain.EN.Pelicula, ApplicationCore" column="PeliculaId" />
   </class>
 </hibernate-mapping>

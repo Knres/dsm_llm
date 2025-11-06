@@ -41,6 +41,31 @@ namespace ApplicationCore.Domain.CEN
             _unitOfWork.SaveChanges();
         }
 
+        public virtual void AsignarCreador(long listaId, long creadorId)
+        {
+            var lista = _listaRepository.ReadById(listaId);
+            if (lista == null)
+                throw new Exception($"Lista {listaId} no encontrada");
+
+            lista.Creador = new Usuario { Id = creadorId };
+            _listaRepository.Modify(lista);
+            _unitOfWork.SaveChanges();
+        }
+
+        public virtual void AgregarPelicula(long listaId, long peliculaId)
+        {
+            var lista = _listaRepository.ReadById(listaId);
+            if (lista == null)
+                throw new Exception($"Lista {listaId} no encontrada");
+
+            if (lista.Peliculas == null)
+                lista.Peliculas = new List<Pelicula>();
+
+            lista.Peliculas.Add(new Pelicula { Id = peliculaId });
+            _listaRepository.Modify(lista);
+            _unitOfWork.SaveChanges();
+        }
+
     public virtual void Eliminar(long id)
         {
             var lista = _listaRepository.ReadById(id);

@@ -42,20 +42,17 @@ namespace ApplicationCore.Domain.CP
                 _unitOfWork.BeginTransaction();
 
                 // Crear la película
-                var pelicula = new Pelicula 
-                {
-                    Titulo = titulo,
-                    TituloOriginal = tituloOriginal,
-                    Anio = anio,
-                    Duracion = duracion,
-                    Pais = pais,
-                    Director = director,
-                    Genero = genero,
-                    Sinopsis = sinopsis,
-                    ValoracionMedia = null
-                };
-                _peliculaCEN.Crear(pelicula);
-                var peliculaId = pelicula.Id;
+                var peliculaId = _peliculaCEN.Crear(
+                    titulo,
+                    tituloOriginal,
+                    anio,
+                    duracion,
+                    pais,
+                    director,
+                    genero,
+                    sinopsis,
+                    0m  // Initial ValoracionMedia set to 0
+                );
 
                 // Crear notificación para todos los usuarios
                 var usuarios = _usuarioRepository.ReadAll();

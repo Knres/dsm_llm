@@ -93,6 +93,28 @@ namespace ApplicationCore.Domain.CEN
             return resenya.Id;
         }
 
+        public virtual void AsignarAutor(long resenyaId, long autorId)
+        {
+            var resenya = _resenyaRepository.ReadById(resenyaId);
+            if (resenya == null)
+                throw new Exception($"Reseña {resenyaId} no encontrada");
+
+            resenya.Autor = new EN.Usuario { Id = autorId };
+            _resenyaRepository.Modify(resenya);
+            _unitOfWork.SaveChanges();
+        }
+
+        public virtual void AsignarPelicula(long resenyaId, long peliculaId)
+        {
+            var resenya = _resenyaRepository.ReadById(resenyaId);
+            if (resenya == null)
+                throw new Exception($"Reseña {resenyaId} no encontrada");
+
+            resenya.Pelicula = new EN.Pelicula { Id = peliculaId };
+            _resenyaRepository.Modify(resenya);
+            _unitOfWork.SaveChanges();
+        }
+
         public virtual void Modificar(long id, long punctuation, string? comentario)
         {
             var resenya = _resenyaRepository.ReadById(id);

@@ -50,12 +50,6 @@ namespace ApplicationCore.Domain.CEN
                 .ToList();
         }
 
-        /// <summary>
-        /// Filtra películas por rango de valoración.
-        /// </summary>
-        /// <param name="valoracionMinima">Valoración mínima (0-10)</param>
-        /// <param name="valoracionMaxima">Valoración máxima (0-10)</param>
-        /// <returns>Lista de películas dentro del rango de valoración especificado</returns>
         public virtual IList<Pelicula> ReadFilterValoracion(decimal valoracionMinima, decimal valoracionMaxima)
         {
             if (valoracionMinima < 0 || valoracionMaxima > 10 || valoracionMinima > valoracionMaxima)
@@ -67,11 +61,6 @@ namespace ApplicationCore.Domain.CEN
                 .ToList();
         }
 
-        /// <summary>
-        /// Filtra películas por año de lanzamiento.
-        /// </summary>
-        /// <param name="anyo">Año a buscar</param>
-        /// <returns>Lista de películas del año especificado</returns>
         public virtual IList<Pelicula> ReadFilterAnyo(long anyo)
         {
             if (anyo <= 0)
@@ -82,12 +71,6 @@ namespace ApplicationCore.Domain.CEN
                 .ToList();
         }
 
-        /// <summary>
-        /// Filtra películas por título (original o traducido).
-        /// La búsqueda es parcial y no distingue mayúsculas/minúsculas.
-        /// </summary>
-        /// <param name="titulo">Texto a buscar en el título</param>
-        /// <returns>Lista de películas que contienen el texto en su título</returns>
         public virtual IList<Pelicula> ReadFilterTitulo(string titulo)
         {
             if (string.IsNullOrWhiteSpace(titulo))
